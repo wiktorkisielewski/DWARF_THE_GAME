@@ -3,13 +3,28 @@
         dwarf.classList.add('dwarf');
         dwarf.id = "dwarfid";
     const head = document.createElement('div');
+        head.classList.add('empty_head');
         head.id = "headid";
     const beard = document.createElement('div');
+        beard.classList.add('empty_beard');
+        beard.id = "beardid";
     const shirt = document.createElement('div');
+        shirt.classList.add('empty_shirt');
+        shirt.id = "shirtid";
     const trousers = document.createElement('div');
+        trousers.classList.add('empty_trousers');
+        trousers.id = "trousersid";
     const shoes = document.createElement('div');
+        shoes.classList.add('empty_shoes');
+        shoes.id = "shoesid";
     const creation_background = document.createElement('div');
     const weapon_background = document.createElement('div');
+    const terrain = document.createElement('div');
+        terrain.classList.add('terrain');
+    const sky = document.createElement('div');
+        sky.classList.add('sky');
+    const manual = document.createElement('div');
+        manual.classList.add('manual');
 
     const head_button = document.createElement('button');
     const beard_button = document.createElement('button');
@@ -148,6 +163,11 @@
     
     
     document.body.appendChild(dwarf);
+    document.body.appendChild(head);
+    document.body.appendChild(beard);
+    document.body.appendChild(shirt);
+    document.body.appendChild(trousers);
+    document.body.appendChild(shoes);
     document.body.appendChild(head_button);
     document.body.appendChild(beard_button);
     document.body.appendChild(shirt_button);
@@ -202,26 +222,38 @@
         e.stopPropagation();
         weapon_off();
         dwarf.appendChild(flamethrower);
+        flamethrower.id = 'weapon';
         document.body.appendChild(play_button);
+        document.body.appendChild(manual);
     }, false);
     
     blast_button.addEventListener('click', function (e) {
         e.stopPropagation();
         weapon_off();
         dwarf.appendChild(blaster);
+        blaster.id = 'weapon';
         document.body.appendChild(play_button);
+        document.body.appendChild(manual);
     }, false);
     
     shot_button.addEventListener('click', function (e) {
         e.stopPropagation();
         weapon_off();
         dwarf.appendChild(minigun);
+        minigun.id = 'minigun';
+        minigun.className = "";
+        minigun.classList.add('minigun_2');
         document.body.appendChild(play_button);
+        document.body.appendChild(manual);
     }, false);
 
     play_button.addEventListener('click', function (e) {
         e.stopPropagation();
-        
+        document.body.appendChild(terrain);
+        document.body.removeChild(play_button);
+        document.body.removeChild(manual);
+        document.body.appendChild(sky);
+        proper_position();
     }, false);
 
     

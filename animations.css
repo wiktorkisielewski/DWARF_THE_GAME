@@ -1,0 +1,72 @@
+.jump_dwarf_shoes {
+    -webkit-animation: jump_dwarf_shoes 1000ms;
+    animation: jump_dwarf_shoes 1000ms;
+}
+.jump_head {
+    -webkit-animation: jump_head 1000ms;
+    animation: jump_head 1000ms;
+}
+.jump_beard {
+    -webkit-animation: jump_beard 1000ms;
+    animation: jump_beard 1000ms;
+}
+.jump_shirt {
+    -webkit-animation: jump_shirt 1000ms;
+    animation: jump_shirt 1000ms;
+}
+.jump_trousers {
+    -webkit-animation: jump_trousers 1000ms;
+    animation: jump_trousers 1000ms;
+}
+.jump_weapon {
+    -webkit-animation: jump_weapon 1000ms;
+    animation: jump_weapon 1000ms;
+}
+@-webkit-keyframes jump_dwarf_shoes {
+    0% , 100% {
+        bottom: 100px;
+    }
+    50% { 
+        bottom: 190px;
+    }
+}
+@-webkit-keyframes jump_head {
+    0% , 100% {
+        bottom: 320px;
+    }
+    50% { 
+        bottom: 410px;
+    }
+}
+@-webkit-keyframes jump_beard {
+    0% , 100% {
+        bottom: 260px;
+    }
+    50% { 
+        bottom: 350px;
+    }
+}
+@-webkit-keyframes jump_shirt {
+    0% , 100% {
+        bottom: 190px;
+    }
+    50% { 
+        bottom: 280px;
+    }
+}
+@-webkit-keyframes jump_trousers {
+    0% , 100% {
+        bottom: 130px;
+    }
+    50% { 
+        bottom: 210px;
+    }
+}
+@-webkit-keyframes jump_weapon {
+    0% , 100% {
+        bottom: 190px;
+    }
+    50% { 
+        bottom: 280px;
+    }
+}

@@ -1,3 +1,4 @@
+
 .dwarf {
     background-image: url(clothes/art.png);
     width: 150px;
@@ -57,9 +58,6 @@ button.y_button:hover {
 }
 button.head_button:hover {
     background-image: url(buttons/head_button_y.png)
-}
-.bold {
-    background-image: none
 }
 .rainbow_head {
     background-image: url(clothes/rainbow.png);
@@ -394,7 +392,7 @@ button.shot_button:hover {
     background-size: 100% 100%;
     z-index: 30;
     position: fixed;
-    top: 150px;
+    top: 145px;
     left: 60px;
 }
 .blaster {
@@ -405,10 +403,21 @@ button.shot_button:hover {
     background-size: 100% 100%;
     z-index: 30;
     position: fixed;
-    top: 150px;
+    top: 145px;
     left: 60px;
 }
 .minigun {
+    background-image: url(weapons/minigun-kopia.png);
+    width: 200px;
+    height: 140px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 30;
+    position: fixed;
+    top: 145px;
+    left: 10px;
+}
+.minigun_2 {
     background-image: url(weapons/minigun.png);
     width: 200px;
     height: 140px;
@@ -433,4 +442,38 @@ button.shot_button:hover {
 }
 button.play_button:hover {
     background-image: url(buttons/play_button_o.png);
+}
+.manual {
+    background-image: url(manual.png);
+    width: 208px;
+    height: 92px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    top: 70px;
+    left: 235px;
+}
+.terrain {
+    background-image: url(playground/ground.png);
+    width: 100vw;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 10;
+}
+.sky {
+    background-image: url(playground/sky.png);
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    bottom: 60px;
+    left: 0px;
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+    z-index: 1;
 }
