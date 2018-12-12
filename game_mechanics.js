@@ -62,13 +62,69 @@
       var shoes = document.getElementById("shoesid");
       var weapon = document.getElementById("weapon");
       
-      var left_pos_d = dwarf.offsetLeft;
-      var left_pos_h = head.offsetLeft;
-      var left_pos_b = beard.offsetLeft;
-      var left_pos_shirt = shirt.offsetLeft;
-      var left_pos_t = trousers.offsetLeft;
-      var left_pos_shoes = shoes.offsetLeft;
-      var left_pos_w = weapon.offsetLeft;
+      function interval(func, wait, times){
+        var interv = function(w, t){
+            return function(){
+                if(typeof t === "undefined" || t-- > 0){
+                    setTimeout(interv, w);
+                    try{
+                        func.call(null);
+                    }
+                    catch(e){
+                        t = 0;
+                        throw e.toString();
+                    }
+                }
+            };
+        }(wait, times);
+    
+        setTimeout(interv, wait);
+    }; 
+
+      function move_left() {
+          var left_pos_d = dwarf.offsetLeft;
+          var left_pos_h = head.offsetLeft;
+          var left_pos_b = beard.offsetLeft;
+          var left_pos_shirt = shirt.offsetLeft;
+          var left_pos_t = trousers.offsetLeft;
+          var left_pos_shoes = shoes.offsetLeft;
+          var left_pos_w = weapon.offsetLeft;
+            dwarf.style.left = (left_pos_d) - 1 + 'px';
+            head.style.left = (left_pos_h) - 1 + 'px';
+            beard.style.left = (left_pos_b) - 1 + 'px';
+            shirt.style.left = (left_pos_shirt) - 1 + 'px';
+            trousers.style.left = (left_pos_t) - 1 + 'px';
+            shoes.style.left = (left_pos_shoes) - 1 + 'px';
+            weapon.style.left = (left_pos_w) - 1 + 'px';
+      }
+
+      function move_right() {
+        var left_pos_d = dwarf.offsetLeft;
+        var left_pos_h = head.offsetLeft;
+        var left_pos_b = beard.offsetLeft;
+        var left_pos_shirt = shirt.offsetLeft;
+        var left_pos_t = trousers.offsetLeft;
+        var left_pos_shoes = shoes.offsetLeft;
+        var left_pos_w = weapon.offsetLeft;
+          dwarf.style.left = (left_pos_d) + 1 + 'px';
+          head.style.left = (left_pos_h) + 1 + 'px';
+          beard.style.left = (left_pos_b) + 1 + 'px';
+          shirt.style.left = (left_pos_shirt) + 1 + 'px';
+          trousers.style.left = (left_pos_t) + 1 + 'px';
+          shoes.style.left = (left_pos_shoes) + 1 + 'px';
+          weapon.style.left = (left_pos_w) + 1 + 'px';
+    }
+
+      function move_left_inter(){
+        interval(function() {
+          move_left();          
+        }, 10, 10);
+      }
+      function move_right_inter(){
+        interval(function() {
+          move_right();          
+        }, 10, 10);
+      }
         if (e.keyCode == '38') {
             dwarf.classList.add('jump_dwarf_shoes');
             shoes.classList.add('jump_dwarf_shoes');
@@ -84,22 +140,9 @@
             setTimeout(reset_jump_trousers, 1005);
             setTimeout(reset_jump_weapon, 1005);
         } else if (e.keyCode == '37') {
-          dwarf.style.left = (left_pos_d) - 10 + 'px';
-          head.style.left = (left_pos_h) - 10 + 'px';
-          beard.style.left = (left_pos_b) - 10 + 'px';
-          shirt.style.left = (left_pos_shirt) - 10 + 'px';
-          trousers.style.left = (left_pos_t) - 10 + 'px';
-          shoes.style.left = (left_pos_shoes) - 10 + 'px';
-          weapon.style.left = (left_pos_w) - 10 + 'px';
+          move_left_inter();
         } else if (e.keyCode == '39') {
-          var left_pos_d = dwarf.offsetLeft;
-          dwarf.style.left = (left_pos_d) + 10 + 'px';
-          head.style.left = (left_pos_h) + 10 + 'px';
-          beard.style.left = (left_pos_b) + 10 + 'px';
-          shirt.style.left = (left_pos_shirt) + 10 + 'px';
-          trousers.style.left = (left_pos_t) + 10 + 'px';
-          shoes.style.left = (left_pos_shoes) + 10 + 'px';
-          weapon.style.left = (left_pos_w) + 10 + 'px';
+          move_right_inter();
         }
     };
    
