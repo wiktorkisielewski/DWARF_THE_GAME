@@ -455,13 +455,24 @@ button.play_button:hover {
 }
 .terrain {
     background-image: url(playground/ground.png);
-    width: 100vw;
+    width: 101vw;
     height: 100px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     position: fixed;
     bottom: 0px;
-    left: 0px;
+    left: 0vw;
+    z-index: 10;
+}
+.terrain_2 {
+    background-image: url(playground/ground.png);
+    width: 101vw;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 100vw;
     z-index: 10;
 }
 .sky {
@@ -476,4 +487,149 @@ button.play_button:hover {
     filter: blur(1px);
     -webkit-filter: blur(1px);
     z-index: 1;
+}
+
+
+.empty_fire {
+    visibility: hidden;
+    width: 144px;
+    height: 54px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 30;
+    position: fixed;
+    top: 145px;
+    left: 190px;
+}
+.blaster_shot {
+    background-image: url(weapons/blaster_shot.gif);
+    visibility: visible;
+    left: 190px;
+    height: 10px;
+}
+.flamethrower_shot {
+    background-image: url(weapons/flamethrower_shot.gif);
+    visibility: visible;
+    width: 200px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 30;
+    position: fixed;
+    top: 145px;
+    left: 195px;
+}
+
+.start_cover {
+    background-color: rgba(0, 0, 0, 0.596);
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 999;
+}
+.start_button {
+    background-image: url(buttons/start_button.png);
+    background-color: rgba(0, 0, 0, 0);
+    width: 396px;
+    height: 132px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+button.start_button:hover {
+    background-image: url(buttons/start_button_h.png);
+    background-color: rgba(0, 0, 0, 0);
+    width: 396px;
+    height: 132px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+.tree {
+    background-image: url(playground/brown_tree.png);
+    width: 135px;
+    height: 152px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: relative;
+    bottom: 0px;
+    right: 0px;
+    z-index: 10000;
+}
+
+.obs {
+    position: fixed;
+    bottom: 77px;
+    right: -190px;
+    z-index: 9999;
+}
+.duck {
+    background-image: url(playground/gray_duck.png);
+    width: 56px;
+    height: 52px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: relative;
+    bottom: -5px;
+    right: -35px;
+    z-index: 10000;
+    -webkit-animation: bird 2000ms infinite;
+    animation: bird 2000ms infinite;
+}
+
+.legs {
+    background-image: url(playground/gray_legs.png);
+    width: 18px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: relative;
+    bottom: 0px;
+    right: -60px;
+    z-index: 10000;
+}
+
+.duck_blue {
+    background-image: url(playground/blue_duck.png);
+    width: 56px;
+    height: 52px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: relative;
+    bottom: -5px;
+    right: -35px;
+    z-index: 10000;
+    -webkit-animation: bird 2000ms infinite;
+    animation: bird 2000ms infinite;
+}
+
+.legs_blue {
+    background-image: url(playground/blue_legs.png);
+    width: 18px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: relative;
+    bottom: 0px;
+    right: -60px;
+    z-index: 10000;
 }

@@ -21,10 +21,19 @@
     const weapon_background = document.createElement('div');
     const terrain = document.createElement('div');
         terrain.classList.add('terrain');
+        terrain.id = "groundid";
+    const terrain_2 = document.createElement('div');
+        terrain_2.classList.add('terrain_2');
+        terrain_2.id = "groundid_2";
     const sky = document.createElement('div');
         sky.classList.add('sky');
     const manual = document.createElement('div');
         manual.classList.add('manual');
+    const fire = document.createElement('div');
+        fire.classList.add("empty_fire");
+    const start_cover = document.createElement('div');
+        start_cover.classList.add('start_cover');
+
 
     const head_button = document.createElement('button');
     const beard_button = document.createElement('button');
@@ -36,6 +45,8 @@
     const blast_button = document.createElement('button');
     const shot_button = document.createElement('button');
     const play_button = document.createElement('button');
+    const start_button = document.createElement('button');
+        start_button.classList.add('start_button');
 
     const blast_img = document.createElement('img');
         blast_img.classList.add('blaster_img');
@@ -168,6 +179,7 @@
     document.body.appendChild(shirt);
     document.body.appendChild(trousers);
     document.body.appendChild(shoes);
+    document.body.appendChild(fire);
     document.body.appendChild(head_button);
     document.body.appendChild(beard_button);
     document.body.appendChild(shirt_button);
@@ -175,6 +187,7 @@
     document.body.appendChild(shoes_button);
     document.body.appendChild(y_button);
     document.body.appendChild(creation_background);
+
     head_button.classList.add('head_button');
     beard_button.classList.add('beard_button');
     shirt_button.classList.add('shirt_button');
@@ -192,7 +205,9 @@
         document.body.appendChild(weapon_background);
         document.body.appendChild(burn_button);
         document.body.appendChild(blast_button);
+            blast_button.id = "blast_button";
         document.body.appendChild(shot_button);
+            shot_button.id = "shot_button";
         document.body.appendChild(blast_img);
         document.body.appendChild(burn_img);
         document.body.appendChild(shoot_img);
@@ -250,11 +265,32 @@
     play_button.addEventListener('click', function (e) {
         e.stopPropagation();
         document.body.appendChild(terrain);
+        document.body.appendChild(terrain_2);
         document.body.removeChild(play_button);
         document.body.removeChild(manual);
         document.body.appendChild(sky);
         proper_position();
+        document.body.appendChild(start_button);
+        document.body.appendChild(start_cover);
     }, false);
 
-    
+
+    var random_number = Math.floor(Math.random() * (3000 - 1200 + 1) + 1500);
+    start_button.addEventListener('click', function (e) {
+        e.stopPropagation();
+        document.body.removeChild(start_button);
+        document.body.removeChild(start_cover);
+        ground_move();
+        setInterval(function() {
+            var randomize =  Boolean(Math.round(Math.random()));
+            if (randomize == true) {
+                spawn_tree();
+            } else if (randomize == false) {
+                spawn_tree_bad();
+            }
+        }, random_number)
+    }, false);
+
+
+        fire.id = 'fireid';
 }());

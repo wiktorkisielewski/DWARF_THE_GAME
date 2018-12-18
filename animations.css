@@ -1,3 +1,10 @@
+.flip {
+    -moz-transform:    scaleX(-1); 
+    -o-transform:      scaleX(-1); 
+    -webkit-transform: scaleX(-1); 
+    transform:         scaleX(-1); 
+    filter: FlipH;                 
+  }
 .jump_dwarf_shoes {
     -webkit-animation: jump_dwarf_shoes 1000ms;
     animation: jump_dwarf_shoes 1000ms;
@@ -22,51 +29,74 @@
     -webkit-animation: jump_weapon 1000ms;
     animation: jump_weapon 1000ms;
 }
+.jump_shot {
+    -webkit-animation: jump_shot 1000ms;
+    animation: jump_shot 1000ms;
+}
 @-webkit-keyframes jump_dwarf_shoes {
     0% , 100% {
         bottom: 100px;
     }
-    50% { 
-        bottom: 190px;
+    40% , 60% { 
+        bottom: 210px;
     }
 }
 @-webkit-keyframes jump_head {
     0% , 100% {
         bottom: 320px;
     }
-    50% { 
-        bottom: 410px;
+    40% , 60% { 
+        bottom: 430px;
     }
 }
 @-webkit-keyframes jump_beard {
     0% , 100% {
         bottom: 260px;
     }
-    50% { 
-        bottom: 350px;
+    40% , 60% { 
+        bottom: 370px;
     }
 }
 @-webkit-keyframes jump_shirt {
     0% , 100% {
         bottom: 190px;
     }
-    50% { 
-        bottom: 280px;
+    40% , 60% { 
+        bottom: 300px;
     }
 }
 @-webkit-keyframes jump_trousers {
     0% , 100% {
         bottom: 130px;
     }
-    50% { 
-        bottom: 210px;
+    40% , 60% { 
+        bottom: 230px;
     }
 }
 @-webkit-keyframes jump_weapon {
     0% , 100% {
         bottom: 190px;
     }
+    40% , 60% { 
+        bottom: 300px;
+    }
+}
+@-webkit-keyframes jump_shot {
+    0% , 100% {
+        bottom: 190px;
+    }
+    40% , 60% { 
+        bottom: 300px;
+    }
+}
+
+
+
+@-webkit-keyframes bird {
+    0% , 100% {
+        transform: rotate(0deg)
+    }
     50% { 
-        bottom: 280px;
+        transform: rotate(-45deg)
     }
 }
