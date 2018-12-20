@@ -498,7 +498,7 @@ button.play_button:hover {
     background-size: 100% 100%;
     z-index: 30;
     position: fixed;
-    top: 145px;
+    bottom: 140px;
     left: 190px;
 }
 .blaster_shot {
@@ -516,7 +516,7 @@ button.play_button:hover {
     background-size: 100% 100%;
     z-index: 30;
     position: fixed;
-    top: 145px;
+    bottom: 140px;
     left: 195px;
 }
 
@@ -632,4 +632,14 @@ button.start_button:hover {
     bottom: 0px;
     right: -60px;
     z-index: 10000;
+}
+.dust {
+    background-image: url(playground/dust.gif);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 150px;
+    height: 60px;
+    position: fixed;
+    left: 80px ;
+    z-index: 9;
 }

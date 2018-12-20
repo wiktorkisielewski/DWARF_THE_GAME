@@ -7,6 +7,7 @@
      shoes = document.getElementById("shoesid");
      weapon = document.getElementById("weapon");
      fire = document.getElementById("fireid");
+     dust = document.getElementById("dustid");
     dwarf.style.top = 'auto';
     dwarf.style.bottom = '100px';
     head.style.top = 'auto';
@@ -23,9 +24,10 @@
     weapon.style.bottom = '190px';
     fire.style.top = 'auto';
     fire.style.bottom = '215px';
+    dust.style.top = 'auto';
+    dust.style.bottom = '100px';
     }
   
-    
     function interval(func, wait, times){
       var interv = function(w, t){
           return function(){
@@ -44,11 +46,6 @@
     setTimeout(interv, wait);
   }; 
 
-    document.onkeydown = function (e) {
-      
-      
-      
-
       function move_left() {
           var left_pos_d = dwarf.offsetLeft;
           var left_pos_h = head.offsetLeft;
@@ -58,6 +55,7 @@
           var left_pos_shoes = shoes.offsetLeft;
           var left_pos_w = weapon.offsetLeft;
           var left_pos_shot = fire.offsetLeft;
+          var left_pos_dust = dust.offsetLeft;
             dwarf.style.left = (left_pos_d) - 2 + 'px';
             head.style.left = (left_pos_h) - 2 + 'px';
             beard.style.left = (left_pos_b) - 2 + 'px';
@@ -66,6 +64,7 @@
             shoes.style.left = (left_pos_shoes) - 2 + 'px';
             weapon.style.left = (left_pos_w) - 2 + 'px';
             fire.style.left = (left_pos_shot) - 2 + 'px';
+            dust.style.left = (left_pos_dust) - 2 + 'px';
       }
 
       function move_right() {
@@ -77,6 +76,7 @@
         var left_pos_shoes = shoes.offsetLeft;
         var left_pos_w = weapon.offsetLeft;
         var left_pos_shot = fire.offsetLeft;
+        var left_pos_dust = dust.offsetLeft;
           dwarf.style.left = (left_pos_d) + 2 + 'px';
           head.style.left = (left_pos_h) + 2 + 'px';
           beard.style.left = (left_pos_b) + 2 + 'px';
@@ -85,6 +85,7 @@
           shoes.style.left = (left_pos_shoes) + 2 + 'px';
           weapon.style.left = (left_pos_w) + 2 + 'px';
           fire.style.left = (left_pos_shot) + 2 + 'px';
+          dust.style.left = (left_pos_dust) + 2 + 'px';
     }
 
     function move_up() {
@@ -135,6 +136,7 @@
           move_right();          
         }, 10, 10);
       }
+      
       function move_up_inter(){
         interval(function() {
           move_up();          
@@ -147,23 +149,21 @@
         }, 0.5, 130);
       }
       
-
       var first_execution = 0;
-      var cooldown = 4000;
-        function jump() {
-          var date = new Date();
-          var milliseconds = date.getTime(); 
-          if((milliseconds - first_execution) > cooldown){
-            first_execution = milliseconds;
-            move_up_inter();
-              setTimeout(function () {
-                move_down_inter();
-              }, 1300)
-          } else {
-            console.log('too early');
-          }
-      }
-      
+      var cooldown = 751;
+      function jump() {
+        var date = new Date();
+        var milliseconds = date.getTime(); 
+        if((milliseconds - first_execution) > cooldown){
+          first_execution = milliseconds;
+          move_up_inter();
+            setTimeout(function () {
+              move_down_inter();
+            }, 750)
+        } else {
+          console.log('too early');
+        }
+    }
 
       function blaster_shot() {
         var fire = document.getElementById("fireid");
@@ -184,20 +184,25 @@
           flamethrower_shot();
         }
       }
-      
-        if (e.keyCode == '38') {
-            jump();
-        } else if (e.keyCode == '37') {
+
+      document.onkeydown = function (e) {
+        if (e.keyCode == '37') {
           move_left_inter();
         } else if (e.keyCode == '39') {
           move_right_inter();
-        } else if (e.keyCode == '32') {
+        } else if (e.keyCode == '16') {
             check_weapon();
+        }
+
+        document.onkeypress = function(e) {
+          if (e.keyCode == '32') {
+            jump();
+          }
         }
     };
    
     document.onkeyup = function(e) {
-      if (e.keyCode == '32') {
+      if (e.keyCode == '16') {
         var fire = document.getElementById('fireid');
         fire.className = "";
         fire.classList.add("empty_fire");
@@ -221,7 +226,8 @@
       }, 5);
     }
 
- 
+  
+
   
   function spawn_tree() {
       const obstacle = document.createElement('div');

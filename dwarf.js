@@ -33,6 +33,9 @@
         fire.classList.add("empty_fire");
     const start_cover = document.createElement('div');
         start_cover.classList.add('start_cover');
+    const dust = document.createElement('div');
+        dust.id = "dustid";
+        dust.classList.add('dust');
 
 
     const head_button = document.createElement('button');
@@ -264,6 +267,7 @@
 
     play_button.addEventListener('click', function (e) {
         e.stopPropagation();
+        document.body.appendChild(dust);
         document.body.appendChild(terrain);
         document.body.appendChild(terrain_2);
         document.body.removeChild(play_button);
@@ -275,7 +279,7 @@
     }, false);
 
 
-    var random_number = Math.floor(Math.random() * (3000 - 1200 + 1) + 1500);
+    
     start_button.addEventListener('click', function (e) {
         e.stopPropagation();
         document.body.removeChild(start_button);
@@ -283,12 +287,17 @@
         ground_move();
         setInterval(function() {
             var randomize =  Boolean(Math.round(Math.random()));
+            var random_time = (Math.floor(Math.random() * 5) + 3) * 700;
             if (randomize == true) {
-                spawn_tree();
+                setTimeout(function () {
+                    spawn_tree();
+                }, random_time)
             } else if (randomize == false) {
-                spawn_tree_bad();
+                setTimeout(function () {
+                    spawn_tree_bad();
+                }, random_time)
             }
-        }, random_number)
+        }, 3000)
     }, false);
 
 

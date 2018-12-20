@@ -1,44 +1,38 @@
-.flip {
-    -moz-transform:    scaleX(-1); 
-    -o-transform:      scaleX(-1); 
-    -webkit-transform: scaleX(-1); 
-    transform:         scaleX(-1); 
-    filter: FlipH;                 
-  }
+
 .jump_dwarf_shoes {
-    -webkit-animation: jump_dwarf_shoes 1000ms;
-    animation: jump_dwarf_shoes 1000ms;
+    -webkit-animation: jump_dwarf_shoes 1700ms;
+    animation: jump_dwarf_shoes 1700ms;
 }
 .jump_head {
-    -webkit-animation: jump_head 1000ms;
-    animation: jump_head 1000ms;
+    -webkit-animation: jump_head 1700ms;
+    animation: jump_head 1700ms;
 }
 .jump_beard {
-    -webkit-animation: jump_beard 1000ms;
-    animation: jump_beard 1000ms;
+    -webkit-animation: jump_beard 1700ms;
+    animation: jump_beard 1700ms;
 }
 .jump_shirt {
-    -webkit-animation: jump_shirt 1000ms;
-    animation: jump_shirt 1000ms;
+    -webkit-animation: jump_shirt 1700ms;
+    animation: jump_shirt 1700ms;
 }
 .jump_trousers {
-    -webkit-animation: jump_trousers 1000ms;
-    animation: jump_trousers 1000ms;
+    -webkit-animation: jump_trousers 1700ms;
+    animation: jump_trousers 1700ms;
 }
 .jump_weapon {
-    -webkit-animation: jump_weapon 1000ms;
-    animation: jump_weapon 1000ms;
+    -webkit-animation: jump_weapon 1700ms;
+    animation: jump_weapon 1700ms;
 }
 .jump_shot {
-    -webkit-animation: jump_shot 1000ms;
-    animation: jump_shot 1000ms;
+    -webkit-animation: jump_shot 1700ms;
+    animation: jump_shot 1700ms;
 }
 @-webkit-keyframes jump_dwarf_shoes {
     0% , 100% {
         bottom: 100px;
     }
     40% , 60% { 
-        bottom: 210px;
+        bottom: 260px;
     }
 }
 @-webkit-keyframes jump_head {
@@ -46,7 +40,7 @@
         bottom: 320px;
     }
     40% , 60% { 
-        bottom: 430px;
+        bottom: 480px;
     }
 }
 @-webkit-keyframes jump_beard {
@@ -54,7 +48,7 @@
         bottom: 260px;
     }
     40% , 60% { 
-        bottom: 370px;
+        bottom: 420px;
     }
 }
 @-webkit-keyframes jump_shirt {
@@ -62,7 +56,7 @@
         bottom: 190px;
     }
     40% , 60% { 
-        bottom: 300px;
+        bottom: 350px;
     }
 }
 @-webkit-keyframes jump_trousers {
@@ -70,7 +64,7 @@
         bottom: 130px;
     }
     40% , 60% { 
-        bottom: 230px;
+        bottom: 280px;
     }
 }
 @-webkit-keyframes jump_weapon {
@@ -78,7 +72,7 @@
         bottom: 190px;
     }
     40% , 60% { 
-        bottom: 300px;
+        bottom: 350px;
     }
 }
 @-webkit-keyframes jump_shot {
@@ -86,7 +80,7 @@
         bottom: 190px;
     }
     40% , 60% { 
-        bottom: 300px;
+        bottom: 350px;
     }
 }
 
