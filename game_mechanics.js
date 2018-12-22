@@ -224,103 +224,142 @@
  
   
   function spawn_tree() {
-      const obstacle = document.createElement('div');
-      const tree = document.createElement('div');
-      const bird = document.createElement('div');
-      const legs = document.createElement('div');
-        obstacle.id = "obs" + 1;
-        obstacle.classList.add('obs');
-        tree.classList.add('tree');
-        bird.classList.add('duck');
-        legs.classList.add('legs');
-      document.body.appendChild(obstacle);
-      obstacle.appendChild(bird);
-      obstacle.appendChild(legs);
-      obstacle.appendChild(tree);
-      
+      const obstacle1 = document.createElement('div');
+      const tree1 = document.createElement('div');
+      const bird1 = document.createElement('div');
+      const legs1 = document.createElement('div');
+      tree1.id = 'treeid1';
+        obstacle1.id = "obs" + 1;
+        obstacle1.classList.add('obs');
+        tree1.classList.add('tree');
+        bird1.classList.add('duck');
+        legs1.classList.add('legs');
+      document.body.appendChild(obstacle1);
+      obstacle1.appendChild(bird1);
+      obstacle1.appendChild(legs1);
+      obstacle1.appendChild(tree1);
+
       setInterval(function () {
-        var obstacle_left = obstacle.offsetLeft;
-        obstacle.style.left = obstacle_left - 1 + 'px';
+        var obstacle_left = obstacle1.offsetLeft;
+        obstacle1.style.left = obstacle_left - 1 + 'px';
+        if (fire.classList.contains('flamethrower_shot') 
+        && (fire.offsetLeft) <= obstacle1.offsetLeft + fire.offsetWidth
+        && (fire.offsetLeft) >= obstacle1.offsetLeft) {
+          tree1.classList.add('tree_flamed');
+          console.log('uno');
+          obstacle1.removeChild(bird1);
+        }
       }, 5)
 
+      
+
       setTimeout(function () {
-        document.body.removeChild(obstacle);
+        document.body.removeChild(obstacle1);
       }, 10000)
     }
 
     function spawn_tree_2() {
-      const obstacle = document.createElement('div');
-      const tree = document.createElement('div');
-      const bird = document.createElement('div');
-      const legs = document.createElement('div');
-        tree.id = 'treeid';
-        obstacle.id = "obs" + 2;
-        obstacle.classList.add('obs');
-        tree.classList.add('tree');
-        bird.classList.add('duck_blue');
-        legs.classList.add('legs_blue');
-      document.body.appendChild(obstacle);
-      obstacle.appendChild(bird);
-      obstacle.appendChild(legs);
-      obstacle.appendChild(tree);
-      
+      const obstacle2 = document.createElement('div');
+      const tree2 = document.createElement('div');
+      const bird2 = document.createElement('div');
+      const legs2 = document.createElement('div');
+        tree2.id = 'treeid2';
+        obstacle2.id = "obs" + 2;
+        obstacle2.classList.add('obs');
+        tree2.classList.add('tree');
+        bird2.classList.add('duck_blue');
+        legs2.classList.add('legs_blue');
+      document.body.appendChild(obstacle2);
+      obstacle2.appendChild(bird2);
+      obstacle2.appendChild(legs2);
+      obstacle2.appendChild(tree2);
+
       setInterval(function () {
-        var obstacle_left = obstacle.offsetLeft;
-        obstacle.style.left = obstacle_left - 1 + 'px';
+        var obstacle_left = obstacle2.offsetLeft;
+        obstacle2.style.left = obstacle_left - 1 + 'px';
+        if (fire.classList.contains('flamethrower_shot') 
+        && (fire.offsetLeft) <= obstacle2.offsetLeft + fire.offsetWidth
+        && (fire.offsetLeft) >= obstacle2.offsetLeft) {
+          tree2.classList.add('tree_flamed');
+          console.log('due');
+          obstacle2.removeChild(bird2);
+        }
       }, 5)
 
+      
+
       setTimeout(function () {
-        document.body.removeChild(obstacle);
+        document.body.removeChild(obstacle2);
       }, 10000)
     }
 
     function spawn_tree_3() {
-      const obstacle = document.createElement('div');
-      const tree = document.createElement('div');
-      const bird = document.createElement('div');
-      const legs = document.createElement('div');
-        obstacle.id = "obs" + 3;
-        obstacle.classList.add('obs');
-        tree.classList.add('tree');
-        bird.classList.add('duck');
-        legs.classList.add('legs');
-      document.body.appendChild(obstacle);
-      obstacle.appendChild(bird);
-      obstacle.appendChild(legs);
-      obstacle.appendChild(tree);
-      
+      const obstacle3 = document.createElement('div');
+      const tree3 = document.createElement('div');
+      const bird3 = document.createElement('div');
+      const legs3 = document.createElement('div');
+      tree3.id = 'treeid3';
+        obstacle3.id = "obs" + 3;
+        obstacle3.classList.add('obs');
+        tree3.classList.add('tree');
+        bird3.classList.add('duck');
+        legs3.classList.add('legs');
+      document.body.appendChild(obstacle3);
+      obstacle3.appendChild(bird3);
+      obstacle3.appendChild(legs3);
+      obstacle3.appendChild(tree3);
+
       setInterval(function () {
-        var obstacle_left = obstacle.offsetLeft;
-        obstacle.style.left = obstacle_left - 1 + 'px';
+        var obstacle_left = obstacle3.offsetLeft;
+        obstacle3.style.left = obstacle_left - 1 + 'px';
+        if (fire.classList.contains('flamethrower_shot') 
+        && (fire.offsetLeft) <= obstacle3.offsetLeft + fire.offsetWidth
+        && (fire.offsetLeft) >= obstacle3.offsetLeft) {
+          tree3.classList.add('tree_flamed');
+          console.log('trio');
+          obstacle3.removeChild(bird3);
+        }
       }, 5)
 
+      
+
       setTimeout(function () {
-        document.body.removeChild(obstacle);
+        document.body.removeChild(obstacle3);
       }, 10000)
     }
 
     function spawn_tree_4() {
-      const obstacle = document.createElement('div');
-      const tree = document.createElement('div');
-      const bird = document.createElement('div');
-      const legs = document.createElement('div');
-        obstacle.id = "obs" + 4;
-        obstacle.classList.add('obs');
-        tree.classList.add('tree');
-        bird.classList.add('duck_blue');
-        legs.classList.add('legs_blue');
-      document.body.appendChild(obstacle);
-      obstacle.appendChild(bird);
-      obstacle.appendChild(legs);
-      obstacle.appendChild(tree);
-      
+      const obstacle4 = document.createElement('div');
+      const tree4 = document.createElement('div');
+      const bird4 = document.createElement('div');
+      const legs4 = document.createElement('div');
+      tree4.id = 'treeid4';
+        obstacle4.id = "obs" + 4;
+        obstacle4.classList.add('obs');
+        tree4.classList.add('tree');
+        bird4.classList.add('duck_blue');
+        legs4.classList.add('legs_blue');
+      document.body.appendChild(obstacle4);
+      obstacle4.appendChild(bird4);
+      obstacle4.appendChild(legs4);
+      obstacle4.appendChild(tree4);
+
       setInterval(function () {
-        var obstacle_left = obstacle.offsetLeft;
-        obstacle.style.left = obstacle_left - 1 + 'px';
+        var obstacle_left = obstacle4.offsetLeft;
+        obstacle4.style.left = obstacle_left - 1 + 'px';
+        if (fire.classList.contains('flamethrower_shot') 
+        && (fire.offsetLeft) <= obstacle4.offsetLeft + fire.offsetWidth
+        && (fire.offsetLeft) >= obstacle4.offsetLeft) {
+          tree4.classList.add('tree_flamed');
+          console.log('quatro');
+          obstacle4.removeChild(bird4);
+        }
       }, 5)
 
+      
+
       setTimeout(function () {
-        document.body.removeChild(obstacle);
+        document.body.removeChild(obstacle4);
       }, 10000)
     }
 
@@ -338,3 +377,23 @@
       }
     }
    
+    /* function burn_tree() {
+      var obstacle_1 = document.getElementById("obs1");
+      var obstacle_2 = document.getElementById("obs2");
+      var obstacle_3 = document.getElementById("obs3");
+      var obstacle_4 = document.getElementById("obs4");
+      var fire = document.getElementById("fireid");
+      var tree = document.getElementById("treeid");
+      if ((fire.offsetLeft + fire.offsetWidth) <= obstacle_1.offsetLeft) {
+        console.log(11);
+      } else if ((fire.offsetLeft + fire.offsetWidth) <= obstacle_2.offsetLeft) {
+        console.log(22);
+      } else if ((fire.offsetLeft + fire.offsetWidth) <= obstacle_3.offsetLeft) {
+        console.log(33);
+      } else if ((fire.offsetLeft + fire.offsetWidth) <= obstacle_4.offsetLeft) {
+        console.log(44);
+      }
+    } */
+
+
+    
