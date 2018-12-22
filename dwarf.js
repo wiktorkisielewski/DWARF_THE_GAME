@@ -285,19 +285,9 @@
         document.body.removeChild(start_button);
         document.body.removeChild(start_cover);
         ground_move();
-        setInterval(function() {
-            var randomize =  Boolean(Math.round(Math.random()));
-            var random_time = (Math.floor(Math.random() * 5) + 3) * 700;
-            if (randomize == true) {
-                setTimeout(function () {
-                    spawn_tree();
-                }, random_time)
-            } else if (randomize == false) {
-                setTimeout(function () {
-                    spawn_tree_bad();
-                }, random_time)
-            }
-        }, 3000)
+       setInterval(function () {
+           spawn_trees();
+       }, 3000)
     }, false);
 
 

@@ -242,9 +242,13 @@
         var obstacle_left = obstacle.offsetLeft;
         obstacle.style.left = obstacle_left - 1 + 'px';
       }, 5)
+
+      setTimeout(function () {
+        document.body.removeChild(obstacle);
+      }, 10000)
     }
 
-    function spawn_tree_bad() {
+    function spawn_tree_2() {
       const obstacle = document.createElement('div');
       const tree = document.createElement('div');
       const bird = document.createElement('div');
@@ -264,13 +268,73 @@
         var obstacle_left = obstacle.offsetLeft;
         obstacle.style.left = obstacle_left - 1 + 'px';
       }, 5)
+
+      setTimeout(function () {
+        document.body.removeChild(obstacle);
+      }, 10000)
     }
 
-    function move_tree() {
-      var tree = document.getElementById('treeid');
-      var obs_left = obs.offsetLeft;
-      var obs_bad_left = obs.offsetLeft;
-      setInterval(function() {
-        tree.style.left = tree_left - 1 + 'px';
+    function spawn_tree_3() {
+      const obstacle = document.createElement('div');
+      const tree = document.createElement('div');
+      const bird = document.createElement('div');
+      const legs = document.createElement('div');
+        obstacle.id = "obs" + 3;
+        obstacle.classList.add('obs');
+        tree.classList.add('tree');
+        bird.classList.add('duck');
+        legs.classList.add('legs');
+      document.body.appendChild(obstacle);
+      obstacle.appendChild(bird);
+      obstacle.appendChild(legs);
+      obstacle.appendChild(tree);
+      
+      setInterval(function () {
+        var obstacle_left = obstacle.offsetLeft;
+        obstacle.style.left = obstacle_left - 1 + 'px';
       }, 5)
+
+      setTimeout(function () {
+        document.body.removeChild(obstacle);
+      }, 10000)
     }
+
+    function spawn_tree_4() {
+      const obstacle = document.createElement('div');
+      const tree = document.createElement('div');
+      const bird = document.createElement('div');
+      const legs = document.createElement('div');
+        obstacle.id = "obs" + 4;
+        obstacle.classList.add('obs');
+        tree.classList.add('tree');
+        bird.classList.add('duck_blue');
+        legs.classList.add('legs_blue');
+      document.body.appendChild(obstacle);
+      obstacle.appendChild(bird);
+      obstacle.appendChild(legs);
+      obstacle.appendChild(tree);
+      
+      setInterval(function () {
+        var obstacle_left = obstacle.offsetLeft;
+        obstacle.style.left = obstacle_left - 1 + 'px';
+      }, 5)
+
+      setTimeout(function () {
+        document.body.removeChild(obstacle);
+      }, 10000)
+    }
+
+    function spawn_trees() {
+      var random = Math.floor(Math.random() * 4) + 1;
+      console.log(random);
+      if (random == 1) {
+        spawn_tree();
+      }  else if (random == 2) {
+        spawn_tree_2();
+      } else if (random == 3) {
+        spawn_tree_3();
+      } else if (random == 4) {
+        spawn_tree_4();
+      }
+    }
+   
