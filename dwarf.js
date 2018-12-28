@@ -37,6 +37,21 @@
         dust.id = "dustid";
         dust.classList.add('dust');
 
+        const score_tab = document.createElement('div');
+        const life = document.createElement('div');
+        const life2 = document.createElement('div');
+        const life3 = document.createElement('div');
+        
+        score_tab.classList.add('score_tab');
+            score_tab.id = "score_tabid"
+        life.classList.add('life');
+            life.id = "lifeid";
+        life2.classList.add('life');
+            life2.id = "life2id";
+        life3.classList.add('life');
+            life3.id = "life3id";
+        
+    
 
     const head_button = document.createElement('button');
     const beard_button = document.createElement('button');
@@ -273,6 +288,11 @@
         document.body.removeChild(play_button);
         document.body.removeChild(manual);
         document.body.appendChild(sky);
+        document.body.appendChild(score_tab);
+        score_tab.appendChild(score);
+        score_tab.appendChild(life);
+        score_tab.appendChild(life2);
+        score_tab.appendChild(life3);
         proper_position();
         document.body.appendChild(start_button);
         document.body.appendChild(start_cover);
@@ -288,9 +308,24 @@
        setInterval(function () {
            spawn_trees();
        }, 3000);
-       
     }, false);
 
+    game_over.addEventListener('click', function (e) {
+        e.stopPropagation();
+        proper_position();
+        document.body.removeChild(game_over_back);
+        document.body.removeChild(game_over);
+    }, false);
+    
+
+    setInterval(function() {
+        if (life3.classList.contains('life_gray')
+        && life2.classList.contains('life_gray')
+        && life.classList.contains('life_gray')) {
+          looser();
+        }
+    }, 1);
+    
 
         fire.id = 'fireid';
 }());

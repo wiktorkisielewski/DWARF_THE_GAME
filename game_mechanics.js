@@ -44,11 +44,32 @@
     setTimeout(interv, wait);
   }; 
 
+  life3 = document.getElementById('life3id');
+  life2 = document.getElementById('life2id');
+  life = document.getElementById('lifeid');
+
+  const game_over_back = document.createElement('div');
+    game_over_back.classList.add('game_over_back');
+  const game_over = document.createElement('button');
+    game_over.classList.add('game_over');
+
+  function looser() {
+    document.body.appendChild(game_over);
+    document.body.appendChild(game_over_back);
+  }
+
+  const score = document.createElement('div');
+
+  score.classList.add('score_font');
+            score.id = "scoreid"
+  
+            points = 0;
+  function add_point() {
+    points += 1;
+  }
+
     document.onkeydown = function (e) {
       
-      
-      
-
       function move_left() {
           var left_pos_d = dwarf.offsetLeft;
           var left_pos_h = head.offsetLeft;
@@ -221,6 +242,30 @@
       }, 5);
     }
 
+    function move_left() {
+      var left_pos_d = dwarf.offsetLeft;
+      var left_pos_h = head.offsetLeft;
+      var left_pos_b = beard.offsetLeft;
+      var left_pos_shirt = shirt.offsetLeft;
+      var left_pos_t = trousers.offsetLeft;
+      var left_pos_shoes = shoes.offsetLeft;
+      var left_pos_w = weapon.offsetLeft;
+      var left_pos_shot = fire.offsetLeft;
+        dwarf.style.left = (left_pos_d) - 1 + 'px';
+        head.style.left = (left_pos_h) - 1 + 'px';
+        beard.style.left = (left_pos_b) - 1 + 'px';
+        shirt.style.left = (left_pos_shirt) - 1 + 'px';
+        trousers.style.left = (left_pos_t) - 1 + 'px';
+        shoes.style.left = (left_pos_shoes) - 1 + 'px';
+        weapon.style.left = (left_pos_w) - 1 + 'px';
+        fire.style.left = (left_pos_shot) - 1 + 'px';
+  }
+
+    function move_left_inter(){
+      interval(function() {
+        move_left();          
+      }, 1, 1);
+    }
  
   
   function spawn_tree() {
@@ -239,19 +284,55 @@
       obstacle1.appendChild(legs1);
       obstacle1.appendChild(tree1);
 
+      life3 = document.getElementById('life3id');
+      life2 = document.getElementById('life2id');
+      life = document.getElementById('lifeid');
+      store_tab = document.getElementById('store_tabid');
+      terrain = document.getElementById('groundid');
       setInterval(function () {
         var obstacle_left = obstacle1.offsetLeft;
         obstacle1.style.left = obstacle_left - 1 + 'px';
         if (fire.classList.contains('flamethrower_shot') 
         && (fire.offsetLeft) <= obstacle1.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle1.offsetLeft) {
+        && (fire.offsetLeft) >= obstacle1.offsetLeft
+        && fire.offsetTop >= obstacle1.offsetTop) {
           tree1.classList.add('tree_flamed');
-          console.log('uno');
+          add_point();
           obstacle1.removeChild(bird1);
+          obstacle1.removeChild(bird1);
+        }
+        if ((dwarf.offsetTop + 240) == terrain.offsetTop){
+          if (dwarf.offsetLeft == obstacle1.offsetLeft
+            && life3.classList.contains('life')
+            && life2.classList.contains('life')
+            && life.classList.contains('life')) {
+              life3.classList.remove('life');
+              life3.classList.add('life_gray');
+          } else if (dwarf.offsetLeft == obstacle1.offsetLeft
+            && life3.classList.contains('life_gray')
+            && life2.classList.contains('life')
+            && life.classList.contains('life')) {
+              life2.classList.remove('life');
+              life2.classList.add('life_gray');
+          } else if (dwarf.offsetLeft == obstacle1.offsetLeft
+            && life3.classList.contains('life_gray')
+            && life2.classList.contains('life_gray')
+            && life.classList.contains('life')) {
+              life.classList.remove('life');
+              life.classList.add('life_gray');
+          } 
         }
       }, 5)
 
-      
+     
+      /*setInterval(function () {
+      if (dwarf.offsetLeft >= (obstacle1.offsetLeft - 115)
+        && (dwarf.offsetTop + 240) >= obstacle1.offsetTop) {
+          move_left_inter();
+        } else if (dwarf.offsetLeft >> (obstacle1.offsetLeft + 115)) {
+          console.log('no huggin')
+        }
+      }, 5)*/
 
       setTimeout(function () {
         document.body.removeChild(obstacle1);
@@ -274,19 +355,45 @@
       obstacle2.appendChild(legs2);
       obstacle2.appendChild(tree2);
 
+      life3 = document.getElementById('life3id');
+      life2 = document.getElementById('life2id');
+      life = document.getElementById('lifeid');
+      store_tab = document.getElementById('store_tabid');
+      terrain = document.getElementById('groundid');
       setInterval(function () {
         var obstacle_left = obstacle2.offsetLeft;
         obstacle2.style.left = obstacle_left - 1 + 'px';
         if (fire.classList.contains('flamethrower_shot') 
         && (fire.offsetLeft) <= obstacle2.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle2.offsetLeft) {
+        && (fire.offsetLeft) >= obstacle2.offsetLeft
+        && fire.offsetTop >= obstacle2.offsetTop) {
           tree2.classList.add('tree_flamed');
-          console.log('due');
+          add_point();
+          obstacle2.removeChild(bird2);
           obstacle2.removeChild(bird2);
         }
+        if ((dwarf.offsetTop + 240) == terrain.offsetTop){
+          if (dwarf.offsetLeft == obstacle2.offsetLeft
+            && life3.classList.contains('life')
+            && life2.classList.contains('life')
+            && life.classList.contains('life')) {
+              life3.classList.remove('life');
+              life3.classList.add('life_gray');
+          } else if (dwarf.offsetLeft == obstacle2.offsetLeft
+            && life3.classList.contains('life_gray')
+            && life2.classList.contains('life')
+            && life.classList.contains('life')) {
+              life2.classList.remove('life');
+              life2.classList.add('life_gray');
+          } else if (dwarf.offsetLeft == obstacle2.offsetLeft
+            && life3.classList.contains('life_gray')
+            && life2.classList.contains('life_gray')
+            && life.classList.contains('life')) {
+              life.classList.remove('life');
+              life.classList.add('life_gray');
+            }
+          }
       }, 5)
-
-      
 
       setTimeout(function () {
         document.body.removeChild(obstacle2);
@@ -309,20 +416,47 @@
       obstacle3.appendChild(legs3);
       obstacle3.appendChild(tree3);
 
+      life3 = document.getElementById('life3id');
+      life2 = document.getElementById('life2id');
+      life = document.getElementById('lifeid');
+      store_tab = document.getElementById('store_tabid');
+      terrain = document.getElementById('groundid');
       setInterval(function () {
         var obstacle_left = obstacle3.offsetLeft;
         obstacle3.style.left = obstacle_left - 1 + 'px';
         if (fire.classList.contains('flamethrower_shot') 
         && (fire.offsetLeft) <= obstacle3.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle3.offsetLeft) {
+        && (fire.offsetLeft) >= obstacle3.offsetLeft
+        && fire.offsetTop >= obstacle3.offsetTop) {
           tree3.classList.add('tree_flamed');
-          console.log('trio');
+          add_point();
+          obstacle3.removeChild(bird3);
           obstacle3.removeChild(bird3);
         }
+        if ((dwarf.offsetTop + 240) == terrain.offsetTop){
+          if (dwarf.offsetLeft == obstacle3.offsetLeft
+            && life3.classList.contains('life')
+            && life2.classList.contains('life')
+            && life.classList.contains('life')) {
+              life3.classList.remove('life');
+              life3.classList.add('life_gray');
+          } else if (dwarf.offsetLeft == obstacle3.offsetLeft
+            && life3.classList.contains('life_gray')
+            && life2.classList.contains('life')
+            && life.classList.contains('life')) {
+              life2.classList.remove('life');
+              life2.classList.add('life_gray');
+          } else if (dwarf.offsetLeft == obstacle3.offsetLeft
+            && life3.classList.contains('life_gray')
+            && life2.classList.contains('life_gray')
+            && life.classList.contains('life')) {
+              life.classList.remove('life');
+              life.classList.add('life_gray');
+            }
+          }
       }, 5)
 
-      
-
+    
       setTimeout(function () {
         document.body.removeChild(obstacle3);
       }, 10000)
@@ -344,19 +478,45 @@
       obstacle4.appendChild(legs4);
       obstacle4.appendChild(tree4);
 
+      life3 = document.getElementById('life3id');
+      life2 = document.getElementById('life2id');
+      life = document.getElementById('lifeid');
+      store_tab = document.getElementById('store_tabid');
+      terrain = document.getElementById('groundid');
       setInterval(function () {
         var obstacle_left = obstacle4.offsetLeft;
         obstacle4.style.left = obstacle_left - 1 + 'px';
         if (fire.classList.contains('flamethrower_shot') 
         && (fire.offsetLeft) <= obstacle4.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle4.offsetLeft) {
+        && (fire.offsetLeft) >= obstacle4.offsetLeft
+        && fire.offsetTop >= obstacle4.offsetTop) {
           tree4.classList.add('tree_flamed');
-          console.log('quatro');
+          add_point();
           obstacle4.removeChild(bird4);
+          obstacle4.removeChild(legs4);
         }
+        if ((dwarf.offsetTop + 240) == terrain.offsetTop){
+          if (dwarf.offsetLeft == obstacle4.offsetLeft
+            && life3.classList.contains('life')
+            && life2.classList.contains('life')
+            && life.classList.contains('life')) {
+              life3.classList.remove('life');
+              life3.classList.add('life_gray');
+          } else if (dwarf.offsetLeft == obstacle4.offsetLeft
+            && life3.classList.contains('life_gray')
+            && life2.classList.contains('life')
+            && life.classList.contains('life')) {
+              life2.classList.remove('life');
+              life2.classList.add('life_gray');
+          } else if (dwarf.offsetLeft == obstacle4.offsetLeft
+            && life3.classList.contains('life_gray')
+            && life2.classList.contains('life_gray')
+            && life.classList.contains('life')) {
+              life.classList.remove('life');
+              life.classList.add('life_gray');
+            }
+          }
       }, 5)
-
-      
 
       setTimeout(function () {
         document.body.removeChild(obstacle4);
@@ -377,23 +537,7 @@
       }
     }
    
-    /* function burn_tree() {
-      var obstacle_1 = document.getElementById("obs1");
-      var obstacle_2 = document.getElementById("obs2");
-      var obstacle_3 = document.getElementById("obs3");
-      var obstacle_4 = document.getElementById("obs4");
-      var fire = document.getElementById("fireid");
-      var tree = document.getElementById("treeid");
-      if ((fire.offsetLeft + fire.offsetWidth) <= obstacle_1.offsetLeft) {
-        console.log(11);
-      } else if ((fire.offsetLeft + fire.offsetWidth) <= obstacle_2.offsetLeft) {
-        console.log(22);
-      } else if ((fire.offsetLeft + fire.offsetWidth) <= obstacle_3.offsetLeft) {
-        console.log(33);
-      } else if ((fire.offsetLeft + fire.offsetWidth) <= obstacle_4.offsetLeft) {
-        console.log(44);
-      }
-    } */
-
-
+    setInterval(function () {
+    score.innerHTML = points;
+    }, 5);
     
