@@ -297,17 +297,13 @@
         document.body.appendChild(start_button);
         document.body.appendChild(start_cover);
     }, false);
-
-
     
     start_button.addEventListener('click', function (e) {
         e.stopPropagation();
         document.body.removeChild(start_button);
         document.body.removeChild(start_cover);
         ground_move();
-       setInterval(function () {
-           spawn_trees();
-       }, 3000);
+        randomize_tree_spawn();
     }, false);
 
     game_over.addEventListener('click', function (e) {

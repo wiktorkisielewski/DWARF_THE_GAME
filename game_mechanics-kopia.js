@@ -58,58 +58,12 @@
     document.body.appendChild(game_over_back);
   }
 
-  function faint() {
-    dwarf = document.getElementById("dwarfid");   
-    head = document.getElementById("headid");
-    beard = document.getElementById("beardid");
-    shirt = document.getElementById("shirtid");
-    trousers = document.getElementById("trousersid");
-    shoes = document.getElementById("shoesid");
-    weapon = document.getElementById("weapon");
-    fire = document.getElementById("fireid");
-
-    interval(function () {
-      dwarf.style.opacity = '0.5';
-      head.style.opacity = '0.5';
-      beard.style.opacity = '0.5';
-      shirt.style.opacity = '0.5';
-      weapon.style.opacity = '0.5';
-      trousers.style.opacity = '0.5';
-      shoes.style.opacity = '0.5';
-      fire.style.opacity = '0.5';
-      setTimeout(function () {
-        dwarf.style.opacity = '1';
-        head.style.opacity = '1';
-        beard.style.opacity = '1';
-        shirt.style.opacity = '1';
-        weapon.style.opacity = '1';
-        trousers.style.opacity = '1';
-        shoes.style.opacity = '1';
-        fire.style.opacity = '1';
-      }, 150)
-    }, 300, 3);
-  }
-
   const score = document.createElement('div');
 
   score.classList.add('score_font');
-  score.id = "scoreid"
-  points = 0;
-  
-  function add_point() {
-    score.classList.add('added_point');
-    points += 1;
-    setTimeout(function () {
-      score.classList.remove('added_point');
-    }, 1200)
-  }
-  function take_point() {
-    score.classList.add('taken_point');
-    points -= 1;
-    setTimeout(function () {
-      score.classList.remove('taken_point');
-    }, 1200)
-  }
+            score.id = "scoreid"
+  score.innerHTML = points;
+  var points = 0;
 
     document.onkeydown = function (e) {
       
@@ -208,14 +162,24 @@
       function move_down_inter(){
         interval(function() {
           move_down();          
-        }, 0.2, 130);
+        }, 0.5, 130);
       }
-  
-      function jump() {
-        move_up_inter();
-            setTimeout(function () {
-              move_down_inter();
-            }, 900)
+      
+
+      var first_execution = 0;
+      var cooldown = 4000;
+        function jump() {
+          var date = new Date();
+          var milliseconds = date.getTime(); 
+          if((milliseconds - first_execution) > cooldown){
+            first_execution = milliseconds;
+            move_up_inter();
+              setTimeout(function () {
+                move_down_inter();
+              }, 1300)
+          } else {
+            console.log('too early');
+          }
       }
       
 
@@ -240,13 +204,13 @@
       }
       
         if (e.keyCode == '38') {
-          jump();
+            jump();
         } else if (e.keyCode == '37') {
           move_left_inter();
         } else if (e.keyCode == '39') {
           move_right_inter();
         } else if (e.keyCode == '32') {
-          check_weapon();
+            check_weapon();
         }
     };
    
@@ -330,9 +294,8 @@
         && (fire.offsetLeft) >= obstacle1.offsetLeft
         && fire.offsetTop >= obstacle1.offsetTop) {
           tree1.classList.add('tree_flamed');
-          take_point();
+          points += 1;
           obstacle1.removeChild(bird1);
-          obstacle1.removeChild(legs1);
         }
         if ((dwarf.offsetTop + 240) == terrain.offsetTop){
           if (dwarf.offsetLeft == obstacle1.offsetLeft
@@ -341,21 +304,18 @@
             && life.classList.contains('life')) {
               life3.classList.remove('life');
               life3.classList.add('life_gray');
-              faint();
           } else if (dwarf.offsetLeft == obstacle1.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life')
             && life.classList.contains('life')) {
               life2.classList.remove('life');
               life2.classList.add('life_gray');
-              faint();
           } else if (dwarf.offsetLeft == obstacle1.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life_gray')
             && life.classList.contains('life')) {
               life.classList.remove('life');
               life.classList.add('life_gray');
-              faint();
           } 
         }
       }, 5)
@@ -404,9 +364,8 @@
         && (fire.offsetLeft) >= obstacle2.offsetLeft
         && fire.offsetTop >= obstacle2.offsetTop) {
           tree2.classList.add('tree_flamed');
-          add_point();
+          points += 1;
           obstacle2.removeChild(bird2);
-          obstacle2.removeChild(legs2);
         }
         if ((dwarf.offsetTop + 240) == terrain.offsetTop){
           if (dwarf.offsetLeft == obstacle2.offsetLeft
@@ -415,21 +374,18 @@
             && life.classList.contains('life')) {
               life3.classList.remove('life');
               life3.classList.add('life_gray');
-              faint();
           } else if (dwarf.offsetLeft == obstacle2.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life')
             && life.classList.contains('life')) {
               life2.classList.remove('life');
               life2.classList.add('life_gray');
-              faint();
           } else if (dwarf.offsetLeft == obstacle2.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life_gray')
             && life.classList.contains('life')) {
               life.classList.remove('life');
               life.classList.add('life_gray');
-              faint();
             }
           }
       }, 5)
@@ -468,9 +424,8 @@
         && (fire.offsetLeft) >= obstacle3.offsetLeft
         && fire.offsetTop >= obstacle3.offsetTop) {
           tree3.classList.add('tree_flamed');
-          take_point();
+          points += 1;
           obstacle3.removeChild(bird3);
-          obstacle3.removeChild(legs3);
         }
         if ((dwarf.offsetTop + 240) == terrain.offsetTop){
           if (dwarf.offsetLeft == obstacle3.offsetLeft
@@ -479,21 +434,18 @@
             && life.classList.contains('life')) {
               life3.classList.remove('life');
               life3.classList.add('life_gray');
-              faint();
           } else if (dwarf.offsetLeft == obstacle3.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life')
             && life.classList.contains('life')) {
               life2.classList.remove('life');
               life2.classList.add('life_gray');
-              faint();
           } else if (dwarf.offsetLeft == obstacle3.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life_gray')
             && life.classList.contains('life')) {
               life.classList.remove('life');
               life.classList.add('life_gray');
-              faint();
             }
           }
       }, 5)
@@ -533,9 +485,8 @@
         && (fire.offsetLeft) >= obstacle4.offsetLeft
         && fire.offsetTop >= obstacle4.offsetTop) {
           tree4.classList.add('tree_flamed');
-          add_point();
+          points += 1;
           obstacle4.removeChild(bird4);
-          obstacle4.removeChild(legs4);
         }
         if ((dwarf.offsetTop + 240) == terrain.offsetTop){
           if (dwarf.offsetLeft == obstacle4.offsetLeft
@@ -544,21 +495,18 @@
             && life.classList.contains('life')) {
               life3.classList.remove('life');
               life3.classList.add('life_gray');
-              faint();
           } else if (dwarf.offsetLeft == obstacle4.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life')
             && life.classList.contains('life')) {
               life2.classList.remove('life');
               life2.classList.add('life_gray');
-              faint();
           } else if (dwarf.offsetLeft == obstacle4.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life_gray')
             && life.classList.contains('life')) {
               life.classList.remove('life');
               life.classList.add('life_gray');
-              faint();
             }
           }
       }, 5)
@@ -566,13 +514,6 @@
       setTimeout(function () {
         document.body.removeChild(obstacle4);
       }, 10000)
-    }
-
-    function randomize_tree_spawn() {
-      var rand = (Math.random() * (4 - 1) + 1); 
-      spawn_trees();
-      console.log(rand);
-      setTimeout(randomize_tree_spawn, rand * 1000);
     }
 
     function spawn_trees() {
@@ -589,7 +530,7 @@
       }
     }
    
-    setInterval(function () {
-    score.innerHTML = points;
-    }, 5);
+    
+
+
     

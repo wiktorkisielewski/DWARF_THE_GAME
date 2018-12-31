@@ -664,9 +664,10 @@ button.start_button:hover {
     background-image: url(life.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     position: relative;
+    top: 10px;
     margin: 0px 5px;
     z-index: 9999;
     border-style: none 
@@ -676,16 +677,19 @@ button.start_button:hover {
     background-image: url(life_gray.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     position: relative;
+    top: 10px;
     margin: 0px 5px;
     z-index: 9999;
-    border-style: none 
+    border-style: none ;
+    animation: life_change 1000ms
 }
 .game_over {
     background-image: url(buttons/game_over.png);
     background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
     background-size: 100% 100%;
     width: 460px;
     height: 380px;
@@ -699,6 +703,7 @@ button.start_button:hover {
 button.game_over:hover {
     background-image: url(buttons/play_again.png);
     background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
     background-size: 100% 100%;
     width: 460px;
     height: 380px;
@@ -724,6 +729,8 @@ button.game_over:hover {
     position: fixed;
     top: 10px;
     right: 10px;
-    font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 45px;
+    font-weight: 800;
     z-index: 9999;
 }
