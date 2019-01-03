@@ -334,7 +334,8 @@
           obstacle1.removeChild(bird1);
           obstacle1.removeChild(legs1);
         }
-        if ((dwarf.offsetTop + 240) == terrain.offsetTop){
+        if ((dwarf.offsetTop + 240) <= terrain.offsetTop
+          && (dwarf.offsetTop + 240) >= obstacle1.offsetTop){
           if (dwarf.offsetLeft == obstacle1.offsetLeft
             && life3.classList.contains('life')
             && life2.classList.contains('life')
@@ -408,7 +409,8 @@
           obstacle2.removeChild(bird2);
           obstacle2.removeChild(legs2);
         }
-        if ((dwarf.offsetTop + 240) == terrain.offsetTop){
+        if ((dwarf.offsetTop + 240) <= terrain.offsetTop
+          && (dwarf.offsetTop + 240) >= obstacle2.offsetTop){
           if (dwarf.offsetLeft == obstacle2.offsetLeft
             && life3.classList.contains('life')
             && life2.classList.contains('life')
@@ -472,7 +474,8 @@
           obstacle3.removeChild(bird3);
           obstacle3.removeChild(legs3);
         }
-        if ((dwarf.offsetTop + 240) == terrain.offsetTop){
+        if ((dwarf.offsetTop + 240) <= terrain.offsetTop
+          && (dwarf.offsetTop + 240) >= obstacle3.offsetTop){
           if (dwarf.offsetLeft == obstacle3.offsetLeft
             && life3.classList.contains('life')
             && life2.classList.contains('life')
@@ -537,7 +540,8 @@
           obstacle4.removeChild(bird4);
           obstacle4.removeChild(legs4);
         }
-        if ((dwarf.offsetTop + 240) == terrain.offsetTop){
+        if ((dwarf.offsetTop + 240) <= terrain.offsetTop
+          && (dwarf.offsetTop + 240) >= obstacle4.offsetTop){
           if (dwarf.offsetLeft == obstacle4.offsetLeft
             && life3.classList.contains('life')
             && life2.classList.contains('life')

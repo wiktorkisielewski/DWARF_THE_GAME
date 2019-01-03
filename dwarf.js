@@ -319,9 +319,12 @@
         && life2.classList.contains('life_gray')
         && life.classList.contains('life_gray')) {
           looser();
+        } else if (points <= -10) {
+          looser();
         }
     }, 1);
     
 
         fire.id = 'fireid';
+
 }());
