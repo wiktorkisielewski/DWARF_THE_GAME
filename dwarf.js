@@ -31,11 +31,15 @@
         manual.classList.add('manual');
     const fire = document.createElement('div');
         fire.classList.add("empty_fire");
+        fire.id = 'fireid';
     const start_cover = document.createElement('div');
         start_cover.classList.add('start_cover');
     const dust = document.createElement('div');
         dust.id = "dustid";
         dust.classList.add('dust');
+    const bullet = document.createElement('div');
+        bullet.classList.add('bullet');
+        bullet.id = "bulletid";
 
         const score_tab = document.createElement('div');
         const life = document.createElement('div');
@@ -198,6 +202,7 @@
     document.body.appendChild(trousers);
     document.body.appendChild(shoes);
     document.body.appendChild(fire);
+    dwarf.appendChild(bullet);
     document.body.appendChild(head_button);
     document.body.appendChild(beard_button);
     document.body.appendChild(shirt_button);
@@ -273,8 +278,8 @@
         e.stopPropagation();
         weapon_off();
         dwarf.appendChild(minigun);
-        minigun.id = 'minigun';
-        minigun.className = "";
+        minigun.id = 'weapon';
+        weapon_no = 1;
         minigun.classList.add('minigun_2');
         document.body.appendChild(play_button);
         document.body.appendChild(manual);
@@ -282,7 +287,7 @@
 
     play_button.addEventListener('click', function (e) {
         e.stopPropagation();
-        document.body.appendChild(dust);
+        dwarf.appendChild(dust);
         document.body.appendChild(terrain);
         document.body.appendChild(terrain_2);
         document.body.removeChild(play_button);
@@ -324,7 +329,5 @@
         }
     }, 1);
     
-
-        fire.id = 'fireid';
-
+    
 }());

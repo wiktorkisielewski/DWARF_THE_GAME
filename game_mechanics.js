@@ -7,6 +7,8 @@
      shoes = document.getElementById("shoesid");
      weapon = document.getElementById("weapon");
      fire = document.getElementById("fireid");
+     bullet = document.getElementById("bulletid");
+     dust = document.getElementById("dustid");
     dwarf.style.top = 'auto';
     dwarf.style.bottom = '100px';
     head.style.top = 'auto';
@@ -19,8 +21,13 @@
     trousers.style.bottom = '130px';
     shoes.style.top = 'auto';
     shoes.style.bottom = '100px';
-    weapon.style.top = 'auto';
-    weapon.style.bottom = '190px';
+    if (weapon.classList.contains('minigun_2')) {
+      weapon.style.top = 'auto';
+      weapon.style.bottom = '100px';
+    } else {
+      weapon.style.top = 'auto';
+      weapon.style.bottom = '190px';
+    }
     fire.style.top = 'auto';
     fire.style.bottom = '215px';
     }
@@ -212,16 +219,28 @@
       }
   
       function jump() {
-        move_up_inter();
+        var ground = document.getElementById('groundid');
+        if (dwarf.offsetTop + 240 == ground.offsetTop) {
+          move_up_inter();
+          dust.style.visibility = 'hidden';
             setTimeout(function () {
               move_down_inter();
-            }, 900)
+              setTimeout(function () {
+                dust.style.visibility = 'visible';
+              }, 700)
+            }, 700)
+          }
       }
       
 
       function blaster_shot() {
-        var fire = document.getElementById("fireid");
-        fire.classList.add('blaster_shot');
+        bullet.style.visibility = 'visible';
+        interval(function() {
+          bullet.style.left = bullet.offsetLeft + 3 + 'px';          
+        }, 1, 100);
+        setTimeout(function(){
+          bullet.style.left = bullet.offsetLeft - 300 + 'px';
+        }, 101);
       }
       function flamethrower_shot() {
         var fire = document.getElementById("fireid");
@@ -575,13 +594,11 @@
     function randomize_tree_spawn() {
       var rand = (Math.random() * (4 - 1) + 1); 
       spawn_trees();
-      console.log(rand);
-      setTimeout(randomize_tree_spawn, rand * 1000);
+      setTimeout(randomize_tree_spawn, rand * 1500);
     }
 
     function spawn_trees() {
       var random = Math.floor(Math.random() * 4) + 1;
-      console.log(random);
       if (random == 1) {
         spawn_tree();
       }  else if (random == 2) {
