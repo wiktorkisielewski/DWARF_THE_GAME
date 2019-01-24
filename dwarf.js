@@ -201,8 +201,7 @@
     document.body.appendChild(shirt);
     document.body.appendChild(trousers);
     document.body.appendChild(shoes);
-    document.body.appendChild(fire);
-    dwarf.appendChild(bullet);
+    dwarf.appendChild(fire);
     document.body.appendChild(head_button);
     document.body.appendChild(beard_button);
     document.body.appendChild(shirt_button);

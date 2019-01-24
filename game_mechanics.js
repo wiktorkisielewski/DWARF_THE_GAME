@@ -7,7 +7,6 @@
      shoes = document.getElementById("shoesid");
      weapon = document.getElementById("weapon");
      fire = document.getElementById("fireid");
-     bullet = document.getElementById("bulletid");
      dust = document.getElementById("dustid");
     dwarf.style.top = 'auto';
     dwarf.style.bottom = '100px';
@@ -29,7 +28,7 @@
       weapon.style.bottom = '190px';
     }
     fire.style.top = 'auto';
-    fire.style.bottom = '215px';
+    fire.style.bottom = '15px';
     }
   
     
@@ -128,7 +127,6 @@
           var left_pos_t = trousers.offsetLeft;
           var left_pos_shoes = shoes.offsetLeft;
           var left_pos_w = weapon.offsetLeft;
-          var left_pos_shot = fire.offsetLeft;
             dwarf.style.left = (left_pos_d) - 2 + 'px';
             head.style.left = (left_pos_h) - 2 + 'px';
             beard.style.left = (left_pos_b) - 2 + 'px';
@@ -136,7 +134,6 @@
             trousers.style.left = (left_pos_t) - 2 + 'px';
             shoes.style.left = (left_pos_shoes) - 2 + 'px';
             weapon.style.left = (left_pos_w) - 2 + 'px';
-            fire.style.left = (left_pos_shot) - 2 + 'px';
       }
 
       function move_right() {
@@ -147,7 +144,6 @@
         var left_pos_t = trousers.offsetLeft;
         var left_pos_shoes = shoes.offsetLeft;
         var left_pos_w = weapon.offsetLeft;
-        var left_pos_shot = fire.offsetLeft;
           dwarf.style.left = (left_pos_d) + 2 + 'px';
           head.style.left = (left_pos_h) + 2 + 'px';
           beard.style.left = (left_pos_b) + 2 + 'px';
@@ -155,7 +151,6 @@
           trousers.style.left = (left_pos_t) + 2 + 'px';
           shoes.style.left = (left_pos_shoes) + 2 + 'px';
           weapon.style.left = (left_pos_w) + 2 + 'px';
-          fire.style.left = (left_pos_shot) + 2 + 'px';
     }
 
     function move_up() {
@@ -166,7 +161,6 @@
       var top_pos_t = trousers.offsetTop;
       var top_pos_shoes = shoes.offsetTop;
       var top_pos_w = weapon.offsetTop;
-      var top_pos_shot = fire.offsetTop;
         dwarf.style.top = (top_pos_d) - 2 + 'px';
         head.style.top = (top_pos_h) - 2 + 'px';
         beard.style.top = (top_pos_b) - 2 + 'px';
@@ -174,7 +168,7 @@
         trousers.style.top = (top_pos_t) - 2 + 'px';
         shoes.style.top = (top_pos_shoes) - 2 + 'px';
         weapon.style.top = (top_pos_w) - 2 + 'px';
-        fire.style.top = (top_pos_shot) - 2 + 'px';
+        
   }
 
   function move_down() {
@@ -185,7 +179,6 @@
     var top_pos_t = trousers.offsetTop;
     var top_pos_shoes = shoes.offsetTop;
     var top_pos_w = weapon.offsetTop;
-    var top_pos_shot = fire.offsetTop;
       dwarf.style.top = (top_pos_d) + 2 + 'px';
       head.style.top = (top_pos_h) + 2 + 'px';
       beard.style.top = (top_pos_b) + 2 + 'px';
@@ -193,7 +186,7 @@
       trousers.style.top = (top_pos_t) + 2 + 'px';
       shoes.style.top = (top_pos_shoes) + 2 + 'px';
       weapon.style.top = (top_pos_w) + 2 + 'px';
-      fire.style.top = (top_pos_shot) + 2 + 'px';
+      
 }
 
       function move_left_inter(){
@@ -234,27 +227,28 @@
       
 
       function blaster_shot() {
-        bullet.style.visibility = 'visible';
-        interval(function() {
-          bullet.style.left = bullet.offsetLeft + 3 + 'px';          
-        }, 1, 100);
-        setTimeout(function(){
-          bullet.style.left = bullet.offsetLeft - 300 + 'px';
-        }, 101);
+        var fire = document.getElementById("fireid");
+        fire.style.bottom = '-66px';
+        fire.classList.add('blaster_shot');
+      }
+      function minigun_shot() {
+        var fire = document.getElementById("fireid");
+        fire.style.bottom = '-115px';
+        fire.classList.add('minigun_shot');
       }
       function flamethrower_shot() {
         var fire = document.getElementById("fireid");
+        fire.style.bottom = '-50px';
         fire.classList.add('flamethrower_shot');
       }
 
       function check_weapon() {
         if (weapon.classList.contains('blaster')) {
           blaster_shot();
-        }
-        else if (weapon.classList.contains('flamethrower')) {
-          var fire = document.getElementById("fireid");
-          fire.style.bottom = '190px';
+        } else if (weapon.classList.contains('flamethrower')) {
           flamethrower_shot();
+        } else {
+          minigun_shot();
         }
       }
       
@@ -302,7 +296,6 @@
       var left_pos_t = trousers.offsetLeft;
       var left_pos_shoes = shoes.offsetLeft;
       var left_pos_w = weapon.offsetLeft;
-      var left_pos_shot = fire.offsetLeft;
         dwarf.style.left = (left_pos_d) - 1 + 'px';
         head.style.left = (left_pos_h) - 1 + 'px';
         beard.style.left = (left_pos_b) - 1 + 'px';
@@ -310,7 +303,6 @@
         trousers.style.left = (left_pos_t) - 1 + 'px';
         shoes.style.left = (left_pos_shoes) - 1 + 'px';
         weapon.style.left = (left_pos_w) - 1 + 'px';
-        fire.style.left = (left_pos_shot) - 1 + 'px';
   }
 
     function move_left_inter(){
@@ -380,15 +372,6 @@
         }
       }, 5)
 
-     
-      /*setInterval(function () {
-      if (dwarf.offsetLeft >= (obstacle1.offsetLeft - 115)
-        && (dwarf.offsetTop + 240) >= obstacle1.offsetTop) {
-          move_left_inter();
-        } else if (dwarf.offsetLeft >> (obstacle1.offsetLeft + 115)) {
-          console.log('no huggin')
-        }
-      }, 5)*/
 
       setTimeout(function () {
         document.body.removeChild(obstacle1);

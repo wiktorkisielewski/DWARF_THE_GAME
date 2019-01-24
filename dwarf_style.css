@@ -497,18 +497,28 @@ button.play_button:hover {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     z-index: 30;
-    position: fixed;
-    bottom: 140px;
-    left: 190px;
-}
-.bullet {
     position: relative;
-    bottom: -115px;
     left: 150px;
-    width: 15px;
-    height: 8px;
-    background-color: rgb(0, 0, 0);
-    visibility: hidden
+}
+.blaster_shot {
+    background-image: url(weapons/blaster_shot.gif);
+    visibility: visible;
+    width: 200px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 30;
+    position: relative;
+}
+.minigun_shot {
+    background-image: url(weapons/minigun_shot.gif);
+    visibility: visible;
+    width: 200px;
+    height: 28px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 30;
+    position: relative;
 }
 .flamethrower_shot {
     background-image: url(weapons/flamethrower_shot.gif);
@@ -518,9 +528,7 @@ button.play_button:hover {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     z-index: 30;
-    position: fixed;
-    bottom: 140px;
-    left: 195px;
+    position: relative;
 }
 
 .start_cover {
@@ -576,6 +584,30 @@ button.start_button:hover {
 }
 .tree_flamed {
     background-image: url(playground/brown_tree_flamed.gif);
+    width: 135px;
+    height: 152px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: relative;
+    bottom: 0px;
+    right: 0px;
+    z-index: 10000;
+}
+.tree_egzecution {
+    background-image: url(playground/tree_egzecution.gif);
+    width: 135px;
+    height: 152px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: relative;
+    bottom: 0px;
+    right: 0px;
+    z-index: 10000;
+}
+.tree_shot {
+    background-image: url(playground/tree_shot.png);
     width: 135px;
     height: 152px;
     background-repeat: no-repeat;
