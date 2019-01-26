@@ -64,21 +64,18 @@
     const shoes_button = document.createElement('button');
     const y_button = document.createElement('button');
     const burn_button = document.createElement('button');
-    const blast_button = document.createElement('button');
     const shot_button = document.createElement('button');
     const play_button = document.createElement('button');
     const start_button = document.createElement('button');
         start_button.classList.add('start_button');
 
-    const blast_img = document.createElement('img');
-        blast_img.classList.add('blaster_img');
+    
     const shoot_img = document.createElement('img');
         shoot_img.classList.add('shoot_img');
     const burn_img = document.createElement('img');
         burn_img.classList.add('burn_img');
 
-    const blaster = document.createElement('div');
-    blaster.classList.add('blaster');
+    
     const flamethrower = document.createElement('div');
     flamethrower.classList.add('flamethrower');
     const minigun = document.createElement('div');
@@ -220,26 +217,20 @@
     creation_background.classList.add('creation_background');
     weapon_background.classList.add('weapon_background');
     shot_button.classList.add('shot_button');
-    blast_button.classList.add('blast_button');
     burn_button.classList.add('burn_button');
 
     function weapon() {
         document.body.appendChild(weapon_background);
         document.body.appendChild(burn_button);
-        document.body.appendChild(blast_button);
-            blast_button.id = "blast_button";
         document.body.appendChild(shot_button);
             shot_button.id = "shot_button";
-        document.body.appendChild(blast_img);
         document.body.appendChild(burn_img);
         document.body.appendChild(shoot_img);
     };
     function weapon_off() {
         document.body.removeChild(weapon_background);
         document.body.removeChild(burn_button);
-        document.body.removeChild(blast_button);
         document.body.removeChild(shot_button);
-        document.body.removeChild(blast_img);
         document.body.removeChild(burn_img);
         document.body.removeChild(shoot_img);
         document.body.removeChild(head_button);
@@ -260,15 +251,6 @@
         weapon_off();
         dwarf.appendChild(flamethrower);
         flamethrower.id = 'weapon';
-        document.body.appendChild(play_button);
-        document.body.appendChild(manual);
-    }, false);
-    
-    blast_button.addEventListener('click', function (e) {
-        e.stopPropagation();
-        weapon_off();
-        dwarf.appendChild(blaster);
-        blaster.id = 'weapon';
         document.body.appendChild(play_button);
         document.body.appendChild(manual);
     }, false);

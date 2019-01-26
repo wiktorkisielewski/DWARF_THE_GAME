@@ -226,14 +226,9 @@
       }
       
 
-      function blaster_shot() {
-        var fire = document.getElementById("fireid");
-        fire.style.bottom = '-66px';
-        fire.classList.add('blaster_shot');
-      }
       function minigun_shot() {
         var fire = document.getElementById("fireid");
-        fire.style.bottom = '-115px';
+        fire.style.bottom = '-70px';
         fire.classList.add('minigun_shot');
       }
       function flamethrower_shot() {
@@ -243,9 +238,7 @@
       }
 
       function check_weapon() {
-        if (weapon.classList.contains('blaster')) {
-          blaster_shot();
-        } else if (weapon.classList.contains('flamethrower')) {
+        if (weapon.classList.contains('flamethrower')) {
           flamethrower_shot();
         } else {
           minigun_shot();
@@ -327,6 +320,7 @@
       obstacle1.appendChild(bird1);
       obstacle1.appendChild(legs1);
       obstacle1.appendChild(tree1);
+      console.log(1);
 
       life3 = document.getElementById('life3id');
       life2 = document.getElementById('life2id');
@@ -336,15 +330,6 @@
       setInterval(function () {
         var obstacle_left = obstacle1.offsetLeft;
         obstacle1.style.left = obstacle_left - 1 + 'px';
-        if (fire.classList.contains('flamethrower_shot') 
-        && (fire.offsetLeft) <= obstacle1.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle1.offsetLeft
-        && fire.offsetTop >= obstacle1.offsetTop) {
-          tree1.classList.add('tree_flamed');
-          take_point();
-          obstacle1.removeChild(bird1);
-          obstacle1.removeChild(legs1);
-        }
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
           && (dwarf.offsetTop + 240) >= obstacle1.offsetTop){
           if (dwarf.offsetLeft == obstacle1.offsetLeft
@@ -372,7 +357,14 @@
         }
       }, 5)
 
-
+      /* setInterval(function(){
+      if ((fire.offsetLeft + 200) << obstacle1.offsetLeft
+      && fire.offsetLeft >> obstacle1.offsetLeft) {
+        if (weapon.classList.contains('flamethrower_shot')) {
+        console.log('elo');
+        }
+      }
+    },1); */
       setTimeout(function () {
         document.body.removeChild(obstacle1);
       }, 10000)
@@ -402,15 +394,6 @@
       setInterval(function () {
         var obstacle_left = obstacle2.offsetLeft;
         obstacle2.style.left = obstacle_left - 1 + 'px';
-        if (fire.classList.contains('flamethrower_shot') 
-        && (fire.offsetLeft) <= obstacle2.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle2.offsetLeft
-        && fire.offsetTop >= obstacle2.offsetTop) {
-          tree2.classList.add('tree_flamed');
-          add_point();
-          obstacle2.removeChild(bird2);
-          obstacle2.removeChild(legs2);
-        }
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
           && (dwarf.offsetTop + 240) >= obstacle2.offsetTop){
           if (dwarf.offsetLeft == obstacle2.offsetLeft
@@ -467,15 +450,6 @@
       setInterval(function () {
         var obstacle_left = obstacle3.offsetLeft;
         obstacle3.style.left = obstacle_left - 1 + 'px';
-        if (fire.classList.contains('flamethrower_shot') 
-        && (fire.offsetLeft) <= obstacle3.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle3.offsetLeft
-        && fire.offsetTop >= obstacle3.offsetTop) {
-          tree3.classList.add('tree_flamed');
-          take_point();
-          obstacle3.removeChild(bird3);
-          obstacle3.removeChild(legs3);
-        }
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
           && (dwarf.offsetTop + 240) >= obstacle3.offsetTop){
           if (dwarf.offsetLeft == obstacle3.offsetLeft
@@ -533,15 +507,6 @@
       setInterval(function () {
         var obstacle_left = obstacle4.offsetLeft;
         obstacle4.style.left = obstacle_left - 1 + 'px';
-        if (fire.classList.contains('flamethrower_shot') 
-        && (fire.offsetLeft) <= obstacle4.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle4.offsetLeft
-        && fire.offsetTop >= obstacle4.offsetTop) {
-          tree4.classList.add('tree_flamed');
-          add_point();
-          obstacle4.removeChild(bird4);
-          obstacle4.removeChild(legs4);
-        }
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
           && (dwarf.offsetTop + 240) >= obstacle4.offsetTop){
           if (dwarf.offsetLeft == obstacle4.offsetLeft
@@ -596,4 +561,4 @@
     setInterval(function () {
     score.innerHTML = points;
     }, 5);
-    
+  

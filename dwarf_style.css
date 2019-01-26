@@ -397,13 +397,13 @@ button.shot_button:hover {
 }
 .blaster {
     background-image: url(weapons/blaster.png);
-    width: 144px;
-    height: 54px;
+    width: 150px;
+    height: 60px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     z-index: 30;
     position: fixed;
-    top: 145px;
+    top: 150px;
     left: 60px;
 }
 .minigun {
@@ -511,14 +511,15 @@ button.play_button:hover {
     position: relative;
 }
 .minigun_shot {
-    background-image: url(weapons/minigun_shot.gif);
+    background-image: url(weapons/mini_shot.gif);
     visibility: visible;
     width: 200px;
-    height: 28px;
+    height: 120px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     z-index: 30;
     position: relative;
+    left: 160px
 }
 .flamethrower_shot {
     background-image: url(weapons/flamethrower_shot.gif);
