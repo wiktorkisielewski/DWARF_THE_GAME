@@ -37,9 +37,14 @@
     const dust = document.createElement('div');
         dust.id = "dustid";
         dust.classList.add('dust');
-    const bullet = document.createElement('div');
-        bullet.classList.add('bullet');
-        bullet.id = "bulletid";
+    const tup_tup = document.createElement('div');
+        tup_tup.classList.add('tup_tup');
+        tup_tup.id = "tup_tupid";
+        document.body.appendChild(tup_tup);
+    const instruction = document.createElement('div');
+        instruction.classList.add('instruction');
+        instruction.id = "instructionid";
+
 
         const score_tab = document.createElement('div');
         const life = document.createElement('div');
@@ -70,9 +75,9 @@
         start_button.classList.add('start_button');
 
     
-    const shoot_img = document.createElement('img');
+    const shoot_img = document.createElement('div');
         shoot_img.classList.add('shoot_img');
-    const burn_img = document.createElement('img');
+    const burn_img = document.createElement('div');
         burn_img.classList.add('burn_img');
 
     
@@ -268,7 +273,7 @@
 
     play_button.addEventListener('click', function (e) {
         e.stopPropagation();
-        dwarf.appendChild(dust);
+        document.body.appendChild(dust);
         document.body.appendChild(terrain);
         document.body.appendChild(terrain_2);
         document.body.removeChild(play_button);
@@ -287,17 +292,17 @@
     start_button.addEventListener('click', function (e) {
         e.stopPropagation();
         document.body.removeChild(start_button);
-        document.body.removeChild(start_cover);
-        ground_move();
-        randomize_tree_spawn();
+        document.body.appendChild(instruction);
+        setTimeout(function() {
+            document.body.removeChild(instruction);
+            document.body.removeChild(start_cover);
+            ground_move();
+            randomize_tree_spawn();
+            tup_tup.style.visibility = ('visible');
+        }, 2000);
     }, false);
 
-    game_over.addEventListener('click', function (e) {
-        e.stopPropagation();
-        proper_position();
-        document.body.removeChild(game_over_back);
-        document.body.removeChild(game_over);
-    }, false);
+    
     
 
     setInterval(function() {

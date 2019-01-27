@@ -7,7 +7,7 @@
      shoes = document.getElementById("shoesid");
      weapon = document.getElementById("weapon");
      fire = document.getElementById("fireid");
-     dust = document.getElementById("dustid");
+     tup_tup = document.getElementById("tup_tupid");
     dwarf.style.top = 'auto';
     dwarf.style.bottom = '100px';
     head.style.top = 'auto';
@@ -20,6 +20,8 @@
     trousers.style.bottom = '130px';
     shoes.style.top = 'auto';
     shoes.style.bottom = '100px';
+    tup_tup.style.top = 'auto';
+    tup_tup.style.bottom = '100px';
     if (weapon.classList.contains('minigun_2')) {
       weapon.style.top = 'auto';
       weapon.style.bottom = '100px';
@@ -54,6 +56,8 @@
   life2 = document.getElementById('life2id');
   life = document.getElementById('lifeid');
 
+  fire_index = 0;
+
   const game_over_back = document.createElement('div');
     game_over_back.classList.add('game_over_back');
   const game_over = document.createElement('button');
@@ -62,6 +66,7 @@
   function looser() {
     document.body.appendChild(game_over);
     document.body.appendChild(game_over_back);
+    
   }
 
   function faint() {
@@ -73,6 +78,7 @@
     shoes = document.getElementById("shoesid");
     weapon = document.getElementById("weapon");
     fire = document.getElementById("fireid");
+    tup_tup = document.getElementById("tup_tupid");
 
     interval(function () {
       dwarf.style.opacity = '0.5';
@@ -83,6 +89,7 @@
       trousers.style.opacity = '0.5';
       shoes.style.opacity = '0.5';
       fire.style.opacity = '0.5';
+      tup_tup.style.opacity = '0.5';
       setTimeout(function () {
         dwarf.style.opacity = '1';
         head.style.opacity = '1';
@@ -92,6 +99,7 @@
         trousers.style.opacity = '1';
         shoes.style.opacity = '1';
         fire.style.opacity = '1';
+        tup_tup.style.opacity = '1';
       }, 150)
     }, 300, 3);
   }
@@ -102,16 +110,33 @@
   score.id = "scoreid"
   points = 0;
   
+  idk = 0;
   function add_point() {
     score.classList.add('added_point');
-    points += 1;
+    if (idk == 0) {
+      points += 1;
+      idk += 1;
+      setTimeout(function (){
+        idk -= 1;
+      },1200);
+    } else {
+      console.log(idk);
+    }
     setTimeout(function () {
       score.classList.remove('added_point');
     }, 1200)
   }
   function take_point() {
     score.classList.add('taken_point');
-    points -= 1;
+    if (idk == 0) {
+      points -= 1;
+      idk += 1;
+      setTimeout(function (){
+        idk -= 1;
+      },1200);
+    } else {
+      console.log(idk);
+    }
     setTimeout(function () {
       score.classList.remove('taken_point');
     }, 1200)
@@ -127,6 +152,8 @@
           var left_pos_t = trousers.offsetLeft;
           var left_pos_shoes = shoes.offsetLeft;
           var left_pos_w = weapon.offsetLeft;
+          var left_pos_tup = tup_tup.offsetLeft;
+            tup_tup.style.left = (left_pos_tup) - 2 + 'px';
             dwarf.style.left = (left_pos_d) - 2 + 'px';
             head.style.left = (left_pos_h) - 2 + 'px';
             beard.style.left = (left_pos_b) - 2 + 'px';
@@ -144,6 +171,8 @@
         var left_pos_t = trousers.offsetLeft;
         var left_pos_shoes = shoes.offsetLeft;
         var left_pos_w = weapon.offsetLeft;
+        var left_pos_tup = tup_tup.offsetLeft;
+          tup_tup.style.left = (left_pos_tup) + 2 + 'px';
           dwarf.style.left = (left_pos_d) + 2 + 'px';
           head.style.left = (left_pos_h) + 2 + 'px';
           beard.style.left = (left_pos_b) + 2 + 'px';
@@ -161,13 +190,13 @@
       var top_pos_t = trousers.offsetTop;
       var top_pos_shoes = shoes.offsetTop;
       var top_pos_w = weapon.offsetTop;
-        dwarf.style.top = (top_pos_d) - 2 + 'px';
-        head.style.top = (top_pos_h) - 2 + 'px';
-        beard.style.top = (top_pos_b) - 2 + 'px';
-        shirt.style.top = (top_pos_shirt) - 2 + 'px';
-        trousers.style.top = (top_pos_t) - 2 + 'px';
-        shoes.style.top = (top_pos_shoes) - 2 + 'px';
-        weapon.style.top = (top_pos_w) - 2 + 'px';
+        dwarf.style.top = (top_pos_d) - 3 + 'px';
+        head.style.top = (top_pos_h) - 3 + 'px';
+        beard.style.top = (top_pos_b) - 3 + 'px';
+        shirt.style.top = (top_pos_shirt) - 3 + 'px';
+        trousers.style.top = (top_pos_t) - 3 + 'px';
+        shoes.style.top = (top_pos_shoes) - 3 + 'px';
+        weapon.style.top = (top_pos_w) - 3 + 'px';
         
   }
 
@@ -179,13 +208,13 @@
     var top_pos_t = trousers.offsetTop;
     var top_pos_shoes = shoes.offsetTop;
     var top_pos_w = weapon.offsetTop;
-      dwarf.style.top = (top_pos_d) + 2 + 'px';
-      head.style.top = (top_pos_h) + 2 + 'px';
-      beard.style.top = (top_pos_b) + 2 + 'px';
-      shirt.style.top = (top_pos_shirt) + 2 + 'px';
-      trousers.style.top = (top_pos_t) + 2 + 'px';
-      shoes.style.top = (top_pos_shoes) + 2 + 'px';
-      weapon.style.top = (top_pos_w) + 2 + 'px';
+      dwarf.style.top = (top_pos_d) + 3 + 'px';
+      head.style.top = (top_pos_h) + 3 + 'px';
+      beard.style.top = (top_pos_b) + 3 + 'px';
+      shirt.style.top = (top_pos_shirt) + 3 + 'px';
+      trousers.style.top = (top_pos_t) + 3 + 'px';
+      shoes.style.top = (top_pos_shoes) + 3 + 'px';
+      weapon.style.top = (top_pos_w) + 3 + 'px';
       
 }
 
@@ -202,30 +231,30 @@
       function move_up_inter(){
         interval(function() {
           move_up();          
-        }, 0.5, 130);
+        }, 1, 100);
       }
 
       function move_down_inter(){
         interval(function() {
           move_down();          
-        }, 0.2, 130);
+        }, 1, 100);
       }
   
       function jump() {
         var ground = document.getElementById('groundid');
         if (dwarf.offsetTop + 240 == ground.offsetTop) {
           move_up_inter();
-          dust.style.visibility = 'hidden';
+          tup_tup.style.visibility = 'hidden';
             setTimeout(function () {
               move_down_inter();
               setTimeout(function () {
-                dust.style.visibility = 'visible';
-              }, 700)
-            }, 700)
+                tup_tup.style.visibility = 'visible';
+              }, 400)
+            }, 600)
           }
       }
       
-
+      
       function minigun_shot() {
         var fire = document.getElementById("fireid");
         fire.style.bottom = '-70px';
@@ -320,7 +349,6 @@
       obstacle1.appendChild(bird1);
       obstacle1.appendChild(legs1);
       obstacle1.appendChild(tree1);
-      console.log(1);
 
       life3 = document.getElementById('life3id');
       life2 = document.getElementById('life2id');
@@ -357,14 +385,26 @@
         }
       }, 5)
 
-      /* setInterval(function(){
-      if ((fire.offsetLeft + 200) << obstacle1.offsetLeft
-      && fire.offsetLeft >> obstacle1.offsetLeft) {
-        if (weapon.classList.contains('flamethrower_shot')) {
-        console.log('elo');
-        }
-      }
-    },1); */
+       setInterval(function(){
+        if ((dwarf.offsetLeft + 250) >= (obstacle1.offsetLeft)
+          && dwarf.offsetLeft <= obstacle1.offsetLeft
+          && (dwarf.offsetTop + 240) >= obstacle1.offsetTop) {
+            take_point();
+            if (fire.classList.contains('minigun_shot')) {
+                tree1.classList.add('tree_egzecution');
+                obstacle1.removeChild(bird1);
+                obstacle1.removeChild(legs1);
+                setTimeout(function() {
+                  tree1.classList.add('tree_shot');
+                },500);
+            } else if (fire.classList.contains('flamethrower_shot')) {
+              tree1.classList.add('tree_flamed');
+              obstacle1.removeChild(bird1);
+              obstacle1.removeChild(legs1);
+            }
+          }
+        },1); 
+
       setTimeout(function () {
         document.body.removeChild(obstacle1);
       }, 10000)
@@ -421,6 +461,26 @@
           }
       }, 5)
 
+      setInterval(function(){
+        if ((dwarf.offsetLeft + 250) >= (obstacle2.offsetLeft)
+          && dwarf.offsetLeft <= obstacle2.offsetLeft
+          && (dwarf.offsetTop + 240) >= obstacle2.offsetTop) {
+            add_point();
+            if (fire.classList.contains('minigun_shot')) {
+                tree2.classList.add('tree_egzecution');
+                obstacle2.removeChild(bird2);
+                obstacle2.removeChild(legs2);
+                setTimeout(function() {
+                  tree2.classList.add('tree_shot');
+                },500);
+            } else if (fire.classList.contains('flamethrower_shot')) {
+              tree2.classList.add('tree_flamed');
+              obstacle2.removeChild(bird2);
+              obstacle2.removeChild(legs2);
+            }
+          }
+        },1); 
+
       setTimeout(function () {
         document.body.removeChild(obstacle2);
       }, 10000)
@@ -476,6 +536,26 @@
             }
           }
       }, 5)
+
+      setInterval(function(){
+        if ((dwarf.offsetLeft + 250) >= (obstacle3.offsetLeft)
+          && dwarf.offsetLeft <= obstacle3.offsetLeft
+          && (dwarf.offsetTop + 240) >= obstacle3.offsetTop) {
+            take_point();
+            if (fire.classList.contains('minigun_shot')) {
+                tree3.classList.add('tree_egzecution');
+                obstacle3.removeChild(bird3);
+                obstacle3.removeChild(legs3);
+                setTimeout(function() {
+                  tree3.classList.add('tree_shot');
+                },500);
+            } else if (fire.classList.contains('flamethrower_shot')) {
+              tree3.classList.add('tree_flamed');
+              obstacle3.removeChild(bird3);
+              obstacle3.removeChild(legs3);
+            }
+          }
+        },1); 
 
     
       setTimeout(function () {
@@ -534,6 +614,25 @@
           }
       }, 5)
 
+      setInterval(function(){
+        if ((dwarf.offsetLeft + 250) >= (obstacle4.offsetLeft)
+          && dwarf.offsetLeft <= obstacle4.offsetLeft
+          && (dwarf.offsetTop + 240) >= obstacle4.offsetTop) {
+            add_point();
+            if (fire.classList.contains('minigun_shot')) {
+                tree4.classList.add('tree_egzecution');
+                obstacle4.removeChild(bird4);
+                obstacle4.removeChild(legs4);
+                setTimeout(function() {
+                  tree4.classList.add('tree_shot');
+                },500);
+            } else if (fire.classList.contains('flamethrower_shot')) {
+              tree4.classList.add('tree_flamed');
+              obstacle4.removeChild(bird4);
+              obstacle4.removeChild(legs4);
+            }
+          }
+        },1); 
       setTimeout(function () {
         document.body.removeChild(obstacle4);
       }, 10000)
