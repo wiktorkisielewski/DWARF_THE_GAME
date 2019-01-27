@@ -31,11 +31,20 @@
         manual.classList.add('manual');
     const fire = document.createElement('div');
         fire.classList.add("empty_fire");
+        fire.id = 'fireid';
     const start_cover = document.createElement('div');
         start_cover.classList.add('start_cover');
     const dust = document.createElement('div');
         dust.id = "dustid";
         dust.classList.add('dust');
+    const tup_tup = document.createElement('div');
+        tup_tup.classList.add('tup_tup');
+        tup_tup.id = "tup_tupid";
+        document.body.appendChild(tup_tup);
+    const instruction = document.createElement('div');
+        instruction.classList.add('instruction');
+        instruction.id = "instructionid";
+
 
         const score_tab = document.createElement('div');
         const life = document.createElement('div');
@@ -60,21 +69,18 @@
     const shoes_button = document.createElement('button');
     const y_button = document.createElement('button');
     const burn_button = document.createElement('button');
-    const blast_button = document.createElement('button');
     const shot_button = document.createElement('button');
     const play_button = document.createElement('button');
     const start_button = document.createElement('button');
         start_button.classList.add('start_button');
 
-    const blast_img = document.createElement('img');
-        blast_img.classList.add('blaster_img');
-    const shoot_img = document.createElement('img');
+    
+    const shoot_img = document.createElement('div');
         shoot_img.classList.add('shoot_img');
-    const burn_img = document.createElement('img');
+    const burn_img = document.createElement('div');
         burn_img.classList.add('burn_img');
 
-    const blaster = document.createElement('div');
-    blaster.classList.add('blaster');
+    
     const flamethrower = document.createElement('div');
     flamethrower.classList.add('flamethrower');
     const minigun = document.createElement('div');
@@ -197,7 +203,7 @@
     document.body.appendChild(shirt);
     document.body.appendChild(trousers);
     document.body.appendChild(shoes);
-    document.body.appendChild(fire);
+    dwarf.appendChild(fire);
     document.body.appendChild(head_button);
     document.body.appendChild(beard_button);
     document.body.appendChild(shirt_button);
@@ -216,26 +222,20 @@
     creation_background.classList.add('creation_background');
     weapon_background.classList.add('weapon_background');
     shot_button.classList.add('shot_button');
-    blast_button.classList.add('blast_button');
     burn_button.classList.add('burn_button');
 
     function weapon() {
         document.body.appendChild(weapon_background);
         document.body.appendChild(burn_button);
-        document.body.appendChild(blast_button);
-            blast_button.id = "blast_button";
         document.body.appendChild(shot_button);
             shot_button.id = "shot_button";
-        document.body.appendChild(blast_img);
         document.body.appendChild(burn_img);
         document.body.appendChild(shoot_img);
     };
     function weapon_off() {
         document.body.removeChild(weapon_background);
         document.body.removeChild(burn_button);
-        document.body.removeChild(blast_button);
         document.body.removeChild(shot_button);
-        document.body.removeChild(blast_img);
         document.body.removeChild(burn_img);
         document.body.removeChild(shoot_img);
         document.body.removeChild(head_button);
@@ -260,21 +260,12 @@
         document.body.appendChild(manual);
     }, false);
     
-    blast_button.addEventListener('click', function (e) {
-        e.stopPropagation();
-        weapon_off();
-        dwarf.appendChild(blaster);
-        blaster.id = 'weapon';
-        document.body.appendChild(play_button);
-        document.body.appendChild(manual);
-    }, false);
-    
     shot_button.addEventListener('click', function (e) {
         e.stopPropagation();
         weapon_off();
         dwarf.appendChild(minigun);
-        minigun.id = 'minigun';
-        minigun.className = "";
+        minigun.id = 'weapon';
+        weapon_no = 1;
         minigun.classList.add('minigun_2');
         document.body.appendChild(play_button);
         document.body.appendChild(manual);
@@ -301,17 +292,17 @@
     start_button.addEventListener('click', function (e) {
         e.stopPropagation();
         document.body.removeChild(start_button);
-        document.body.removeChild(start_cover);
-        ground_move();
-        randomize_tree_spawn();
+        document.body.appendChild(instruction);
+        setTimeout(function() {
+            document.body.removeChild(instruction);
+            document.body.removeChild(start_cover);
+            ground_move();
+            randomize_tree_spawn();
+            tup_tup.style.visibility = ('visible');
+        }, 2000);
     }, false);
 
-    game_over.addEventListener('click', function (e) {
-        e.stopPropagation();
-        proper_position();
-        document.body.removeChild(game_over_back);
-        document.body.removeChild(game_over);
-    }, false);
+    
     
 
     setInterval(function() {
@@ -324,7 +315,5 @@
         }
     }, 1);
     
-
-        fire.id = 'fireid';
-
+    
 }());

@@ -7,6 +7,7 @@
      shoes = document.getElementById("shoesid");
      weapon = document.getElementById("weapon");
      fire = document.getElementById("fireid");
+     tup_tup = document.getElementById("tup_tupid");
     dwarf.style.top = 'auto';
     dwarf.style.bottom = '100px';
     head.style.top = 'auto';
@@ -19,10 +20,17 @@
     trousers.style.bottom = '130px';
     shoes.style.top = 'auto';
     shoes.style.bottom = '100px';
-    weapon.style.top = 'auto';
-    weapon.style.bottom = '190px';
+    tup_tup.style.top = 'auto';
+    tup_tup.style.bottom = '100px';
+    if (weapon.classList.contains('minigun_2')) {
+      weapon.style.top = 'auto';
+      weapon.style.bottom = '100px';
+    } else {
+      weapon.style.top = 'auto';
+      weapon.style.bottom = '190px';
+    }
     fire.style.top = 'auto';
-    fire.style.bottom = '215px';
+    fire.style.bottom = '15px';
     }
   
     
@@ -48,6 +56,8 @@
   life2 = document.getElementById('life2id');
   life = document.getElementById('lifeid');
 
+  fire_index = 0;
+
   const game_over_back = document.createElement('div');
     game_over_back.classList.add('game_over_back');
   const game_over = document.createElement('button');
@@ -56,6 +66,7 @@
   function looser() {
     document.body.appendChild(game_over);
     document.body.appendChild(game_over_back);
+    
   }
 
   function faint() {
@@ -67,6 +78,7 @@
     shoes = document.getElementById("shoesid");
     weapon = document.getElementById("weapon");
     fire = document.getElementById("fireid");
+    tup_tup = document.getElementById("tup_tupid");
 
     interval(function () {
       dwarf.style.opacity = '0.5';
@@ -77,6 +89,7 @@
       trousers.style.opacity = '0.5';
       shoes.style.opacity = '0.5';
       fire.style.opacity = '0.5';
+      tup_tup.style.opacity = '0.5';
       setTimeout(function () {
         dwarf.style.opacity = '1';
         head.style.opacity = '1';
@@ -86,6 +99,7 @@
         trousers.style.opacity = '1';
         shoes.style.opacity = '1';
         fire.style.opacity = '1';
+        tup_tup.style.opacity = '1';
       }, 150)
     }, 300, 3);
   }
@@ -96,16 +110,33 @@
   score.id = "scoreid"
   points = 0;
   
+  idk = 0;
   function add_point() {
     score.classList.add('added_point');
-    points += 1;
+    if (idk == 0) {
+      points += 1;
+      idk += 1;
+      setTimeout(function (){
+        idk -= 1;
+      },1200);
+    } else {
+      console.log(idk);
+    }
     setTimeout(function () {
       score.classList.remove('added_point');
     }, 1200)
   }
   function take_point() {
     score.classList.add('taken_point');
-    points -= 1;
+    if (idk == 0) {
+      points -= 1;
+      idk += 1;
+      setTimeout(function (){
+        idk -= 1;
+      },1200);
+    } else {
+      console.log(idk);
+    }
     setTimeout(function () {
       score.classList.remove('taken_point');
     }, 1200)
@@ -121,7 +152,8 @@
           var left_pos_t = trousers.offsetLeft;
           var left_pos_shoes = shoes.offsetLeft;
           var left_pos_w = weapon.offsetLeft;
-          var left_pos_shot = fire.offsetLeft;
+          var left_pos_tup = tup_tup.offsetLeft;
+            tup_tup.style.left = (left_pos_tup) - 2 + 'px';
             dwarf.style.left = (left_pos_d) - 2 + 'px';
             head.style.left = (left_pos_h) - 2 + 'px';
             beard.style.left = (left_pos_b) - 2 + 'px';
@@ -129,7 +161,6 @@
             trousers.style.left = (left_pos_t) - 2 + 'px';
             shoes.style.left = (left_pos_shoes) - 2 + 'px';
             weapon.style.left = (left_pos_w) - 2 + 'px';
-            fire.style.left = (left_pos_shot) - 2 + 'px';
       }
 
       function move_right() {
@@ -140,7 +171,8 @@
         var left_pos_t = trousers.offsetLeft;
         var left_pos_shoes = shoes.offsetLeft;
         var left_pos_w = weapon.offsetLeft;
-        var left_pos_shot = fire.offsetLeft;
+        var left_pos_tup = tup_tup.offsetLeft;
+          tup_tup.style.left = (left_pos_tup) + 2 + 'px';
           dwarf.style.left = (left_pos_d) + 2 + 'px';
           head.style.left = (left_pos_h) + 2 + 'px';
           beard.style.left = (left_pos_b) + 2 + 'px';
@@ -148,7 +180,6 @@
           trousers.style.left = (left_pos_t) + 2 + 'px';
           shoes.style.left = (left_pos_shoes) + 2 + 'px';
           weapon.style.left = (left_pos_w) + 2 + 'px';
-          fire.style.left = (left_pos_shot) + 2 + 'px';
     }
 
     function move_up() {
@@ -159,15 +190,14 @@
       var top_pos_t = trousers.offsetTop;
       var top_pos_shoes = shoes.offsetTop;
       var top_pos_w = weapon.offsetTop;
-      var top_pos_shot = fire.offsetTop;
-        dwarf.style.top = (top_pos_d) - 2 + 'px';
-        head.style.top = (top_pos_h) - 2 + 'px';
-        beard.style.top = (top_pos_b) - 2 + 'px';
-        shirt.style.top = (top_pos_shirt) - 2 + 'px';
-        trousers.style.top = (top_pos_t) - 2 + 'px';
-        shoes.style.top = (top_pos_shoes) - 2 + 'px';
-        weapon.style.top = (top_pos_w) - 2 + 'px';
-        fire.style.top = (top_pos_shot) - 2 + 'px';
+        dwarf.style.top = (top_pos_d) - 3 + 'px';
+        head.style.top = (top_pos_h) - 3 + 'px';
+        beard.style.top = (top_pos_b) - 3 + 'px';
+        shirt.style.top = (top_pos_shirt) - 3 + 'px';
+        trousers.style.top = (top_pos_t) - 3 + 'px';
+        shoes.style.top = (top_pos_shoes) - 3 + 'px';
+        weapon.style.top = (top_pos_w) - 3 + 'px';
+        
   }
 
   function move_down() {
@@ -178,15 +208,14 @@
     var top_pos_t = trousers.offsetTop;
     var top_pos_shoes = shoes.offsetTop;
     var top_pos_w = weapon.offsetTop;
-    var top_pos_shot = fire.offsetTop;
-      dwarf.style.top = (top_pos_d) + 2 + 'px';
-      head.style.top = (top_pos_h) + 2 + 'px';
-      beard.style.top = (top_pos_b) + 2 + 'px';
-      shirt.style.top = (top_pos_shirt) + 2 + 'px';
-      trousers.style.top = (top_pos_t) + 2 + 'px';
-      shoes.style.top = (top_pos_shoes) + 2 + 'px';
-      weapon.style.top = (top_pos_w) + 2 + 'px';
-      fire.style.top = (top_pos_shot) + 2 + 'px';
+      dwarf.style.top = (top_pos_d) + 3 + 'px';
+      head.style.top = (top_pos_h) + 3 + 'px';
+      beard.style.top = (top_pos_b) + 3 + 'px';
+      shirt.style.top = (top_pos_shirt) + 3 + 'px';
+      trousers.style.top = (top_pos_t) + 3 + 'px';
+      shoes.style.top = (top_pos_shoes) + 3 + 'px';
+      weapon.style.top = (top_pos_w) + 3 + 'px';
+      
 }
 
       function move_left_inter(){
@@ -202,40 +231,46 @@
       function move_up_inter(){
         interval(function() {
           move_up();          
-        }, 0.5, 130);
+        }, 1, 100);
       }
 
       function move_down_inter(){
         interval(function() {
           move_down();          
-        }, 0.2, 130);
+        }, 1, 100);
       }
   
       function jump() {
-        move_up_inter();
+        var ground = document.getElementById('groundid');
+        if (dwarf.offsetTop + 240 == ground.offsetTop) {
+          move_up_inter();
+          tup_tup.style.visibility = 'hidden';
             setTimeout(function () {
               move_down_inter();
-            }, 900)
+              setTimeout(function () {
+                tup_tup.style.visibility = 'visible';
+              }, 400)
+            }, 600)
+          }
       }
       
-
-      function blaster_shot() {
+      
+      function minigun_shot() {
         var fire = document.getElementById("fireid");
-        fire.classList.add('blaster_shot');
+        fire.style.bottom = '-70px';
+        fire.classList.add('minigun_shot');
       }
       function flamethrower_shot() {
         var fire = document.getElementById("fireid");
+        fire.style.bottom = '-50px';
         fire.classList.add('flamethrower_shot');
       }
 
       function check_weapon() {
-        if (weapon.classList.contains('blaster')) {
-          blaster_shot();
-        }
-        else if (weapon.classList.contains('flamethrower')) {
-          var fire = document.getElementById("fireid");
-          fire.style.bottom = '190px';
+        if (weapon.classList.contains('flamethrower')) {
           flamethrower_shot();
+        } else {
+          minigun_shot();
         }
       }
       
@@ -283,7 +318,6 @@
       var left_pos_t = trousers.offsetLeft;
       var left_pos_shoes = shoes.offsetLeft;
       var left_pos_w = weapon.offsetLeft;
-      var left_pos_shot = fire.offsetLeft;
         dwarf.style.left = (left_pos_d) - 1 + 'px';
         head.style.left = (left_pos_h) - 1 + 'px';
         beard.style.left = (left_pos_b) - 1 + 'px';
@@ -291,7 +325,6 @@
         trousers.style.left = (left_pos_t) - 1 + 'px';
         shoes.style.left = (left_pos_shoes) - 1 + 'px';
         weapon.style.left = (left_pos_w) - 1 + 'px';
-        fire.style.left = (left_pos_shot) - 1 + 'px';
   }
 
     function move_left_inter(){
@@ -325,15 +358,6 @@
       setInterval(function () {
         var obstacle_left = obstacle1.offsetLeft;
         obstacle1.style.left = obstacle_left - 1 + 'px';
-        if (fire.classList.contains('flamethrower_shot') 
-        && (fire.offsetLeft) <= obstacle1.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle1.offsetLeft
-        && fire.offsetTop >= obstacle1.offsetTop) {
-          tree1.classList.add('tree_flamed');
-          take_point();
-          obstacle1.removeChild(bird1);
-          obstacle1.removeChild(legs1);
-        }
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
           && (dwarf.offsetTop + 240) >= obstacle1.offsetTop){
           if (dwarf.offsetLeft == obstacle1.offsetLeft
@@ -361,15 +385,25 @@
         }
       }, 5)
 
-     
-      /*setInterval(function () {
-      if (dwarf.offsetLeft >= (obstacle1.offsetLeft - 115)
-        && (dwarf.offsetTop + 240) >= obstacle1.offsetTop) {
-          move_left_inter();
-        } else if (dwarf.offsetLeft >> (obstacle1.offsetLeft + 115)) {
-          console.log('no huggin')
-        }
-      }, 5)*/
+       setInterval(function(){
+        if ((dwarf.offsetLeft + 250) >= (obstacle1.offsetLeft)
+          && dwarf.offsetLeft <= obstacle1.offsetLeft
+          && (dwarf.offsetTop + 240) >= obstacle1.offsetTop) {
+            take_point();
+            if (fire.classList.contains('minigun_shot')) {
+                tree1.classList.add('tree_egzecution');
+                obstacle1.removeChild(bird1);
+                obstacle1.removeChild(legs1);
+                setTimeout(function() {
+                  tree1.classList.add('tree_shot');
+                },500);
+            } else if (fire.classList.contains('flamethrower_shot')) {
+              tree1.classList.add('tree_flamed');
+              obstacle1.removeChild(bird1);
+              obstacle1.removeChild(legs1);
+            }
+          }
+        },1); 
 
       setTimeout(function () {
         document.body.removeChild(obstacle1);
@@ -400,15 +434,6 @@
       setInterval(function () {
         var obstacle_left = obstacle2.offsetLeft;
         obstacle2.style.left = obstacle_left - 1 + 'px';
-        if (fire.classList.contains('flamethrower_shot') 
-        && (fire.offsetLeft) <= obstacle2.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle2.offsetLeft
-        && fire.offsetTop >= obstacle2.offsetTop) {
-          tree2.classList.add('tree_flamed');
-          add_point();
-          obstacle2.removeChild(bird2);
-          obstacle2.removeChild(legs2);
-        }
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
           && (dwarf.offsetTop + 240) >= obstacle2.offsetTop){
           if (dwarf.offsetLeft == obstacle2.offsetLeft
@@ -435,6 +460,26 @@
             }
           }
       }, 5)
+
+      setInterval(function(){
+        if ((dwarf.offsetLeft + 250) >= (obstacle2.offsetLeft)
+          && dwarf.offsetLeft <= obstacle2.offsetLeft
+          && (dwarf.offsetTop + 240) >= obstacle2.offsetTop) {
+            add_point();
+            if (fire.classList.contains('minigun_shot')) {
+                tree2.classList.add('tree_egzecution');
+                obstacle2.removeChild(bird2);
+                obstacle2.removeChild(legs2);
+                setTimeout(function() {
+                  tree2.classList.add('tree_shot');
+                },500);
+            } else if (fire.classList.contains('flamethrower_shot')) {
+              tree2.classList.add('tree_flamed');
+              obstacle2.removeChild(bird2);
+              obstacle2.removeChild(legs2);
+            }
+          }
+        },1); 
 
       setTimeout(function () {
         document.body.removeChild(obstacle2);
@@ -465,15 +510,6 @@
       setInterval(function () {
         var obstacle_left = obstacle3.offsetLeft;
         obstacle3.style.left = obstacle_left - 1 + 'px';
-        if (fire.classList.contains('flamethrower_shot') 
-        && (fire.offsetLeft) <= obstacle3.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle3.offsetLeft
-        && fire.offsetTop >= obstacle3.offsetTop) {
-          tree3.classList.add('tree_flamed');
-          take_point();
-          obstacle3.removeChild(bird3);
-          obstacle3.removeChild(legs3);
-        }
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
           && (dwarf.offsetTop + 240) >= obstacle3.offsetTop){
           if (dwarf.offsetLeft == obstacle3.offsetLeft
@@ -500,6 +536,26 @@
             }
           }
       }, 5)
+
+      setInterval(function(){
+        if ((dwarf.offsetLeft + 250) >= (obstacle3.offsetLeft)
+          && dwarf.offsetLeft <= obstacle3.offsetLeft
+          && (dwarf.offsetTop + 240) >= obstacle3.offsetTop) {
+            take_point();
+            if (fire.classList.contains('minigun_shot')) {
+                tree3.classList.add('tree_egzecution');
+                obstacle3.removeChild(bird3);
+                obstacle3.removeChild(legs3);
+                setTimeout(function() {
+                  tree3.classList.add('tree_shot');
+                },500);
+            } else if (fire.classList.contains('flamethrower_shot')) {
+              tree3.classList.add('tree_flamed');
+              obstacle3.removeChild(bird3);
+              obstacle3.removeChild(legs3);
+            }
+          }
+        },1); 
 
     
       setTimeout(function () {
@@ -531,15 +587,6 @@
       setInterval(function () {
         var obstacle_left = obstacle4.offsetLeft;
         obstacle4.style.left = obstacle_left - 1 + 'px';
-        if (fire.classList.contains('flamethrower_shot') 
-        && (fire.offsetLeft) <= obstacle4.offsetLeft + fire.offsetWidth
-        && (fire.offsetLeft) >= obstacle4.offsetLeft
-        && fire.offsetTop >= obstacle4.offsetTop) {
-          tree4.classList.add('tree_flamed');
-          add_point();
-          obstacle4.removeChild(bird4);
-          obstacle4.removeChild(legs4);
-        }
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
           && (dwarf.offsetTop + 240) >= obstacle4.offsetTop){
           if (dwarf.offsetLeft == obstacle4.offsetLeft
@@ -567,6 +614,25 @@
           }
       }, 5)
 
+      setInterval(function(){
+        if ((dwarf.offsetLeft + 250) >= (obstacle4.offsetLeft)
+          && dwarf.offsetLeft <= obstacle4.offsetLeft
+          && (dwarf.offsetTop + 240) >= obstacle4.offsetTop) {
+            add_point();
+            if (fire.classList.contains('minigun_shot')) {
+                tree4.classList.add('tree_egzecution');
+                obstacle4.removeChild(bird4);
+                obstacle4.removeChild(legs4);
+                setTimeout(function() {
+                  tree4.classList.add('tree_shot');
+                },500);
+            } else if (fire.classList.contains('flamethrower_shot')) {
+              tree4.classList.add('tree_flamed');
+              obstacle4.removeChild(bird4);
+              obstacle4.removeChild(legs4);
+            }
+          }
+        },1); 
       setTimeout(function () {
         document.body.removeChild(obstacle4);
       }, 10000)
@@ -575,13 +641,11 @@
     function randomize_tree_spawn() {
       var rand = (Math.random() * (4 - 1) + 1); 
       spawn_trees();
-      console.log(rand);
-      setTimeout(randomize_tree_spawn, rand * 1000);
+      setTimeout(randomize_tree_spawn, rand * 1500);
     }
 
     function spawn_trees() {
       var random = Math.floor(Math.random() * 4) + 1;
-      console.log(random);
       if (random == 1) {
         spawn_tree();
       }  else if (random == 2) {
@@ -596,4 +660,4 @@
     setInterval(function () {
     score.innerHTML = points;
     }, 5);
-    
+  

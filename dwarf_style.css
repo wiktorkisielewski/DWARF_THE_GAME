@@ -311,27 +311,12 @@ button.shoes_button:hover {
     background-size: 100% 100%;
     border: none;
     position: fixed;
-    top: 50px;
+    top: 100px;
     left: 80px;
     z-index: 25;
 }
 button.burn_button:hover {
     background-image: url(buttons/burn_button_r.png);
-}
-.blast_button {
-    background-image: url(buttons/blast_button.png);
-    width: 144px;
-    height: 54px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border: none;
-    position: fixed;
-    top: 150px;
-    left: 80px;
-    z-index: 25;
-}
-button.blast_button:hover {
-    background-image: url(buttons/blast_button_r.png);
 }
 .shot_button {
     background-image: url(buttons/shot_button.png);
@@ -341,24 +326,12 @@ button.blast_button:hover {
     background-size: 100% 100%;
     border: none;
     position: fixed;
-    top: 250px;
+    top: 200px;
     left: 80px;
     z-index: 25;
 }
 button.shot_button:hover {
     background-image: url(buttons/shot_button_r.png);
-}
-.blaster_img {
-    background-image: url(weapons/blaster.png);
-    width: 144px;
-    height: 54px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    z-index: 30;
-    position: fixed;
-    top: 150px;
-    left: 260px;
-    border: none;
 }
 .burn_img {
     background-image: url(weapons/flamethrower.png);
@@ -368,7 +341,7 @@ button.shot_button:hover {
     background-size: 100% 100%;
     z-index: 30;
     position: fixed;
-    top: 50px;
+    top: 100px;
     left: 260px;
 }
 .shoot_img {
@@ -379,24 +352,13 @@ button.shot_button:hover {
     background-size: 100% 100%;
     z-index: 30;
     position: fixed;
-    top: 250px;
+    top: 200px;
     left: 260px;
     border: none;
 }
 
 .flamethrower {
     background-image: url(weapons/flamethrower.png);
-    width: 144px;
-    height: 54px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    z-index: 30;
-    position: fixed;
-    top: 145px;
-    left: 60px;
-}
-.blaster {
-    background-image: url(weapons/blaster.png);
     width: 144px;
     height: 54px;
     background-repeat: no-repeat;
@@ -497,15 +459,19 @@ button.play_button:hover {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     z-index: 30;
-    position: fixed;
-    bottom: 140px;
-    left: 190px;
+    position: relative;
+    left: 150px;
 }
-.blaster_shot {
-    background-image: url(weapons/blaster_shot.gif);
+.minigun_shot {
+    background-image: url(weapons/mini_shot.gif);
     visibility: visible;
-    left: 190px;
-    height: 10px;
+    width: 200px;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 30;
+    position: relative;
+    left: 160px
 }
 .flamethrower_shot {
     background-image: url(weapons/flamethrower_shot.gif);
@@ -515,9 +481,7 @@ button.play_button:hover {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     z-index: 30;
-    position: fixed;
-    bottom: 140px;
-    left: 195px;
+    position: relative;
 }
 
 .start_cover {
@@ -545,6 +509,7 @@ button.play_button:hover {
     transform: translate(-50%, -50%);
     z-index: 1000;
 }
+
 button.start_button:hover {
     background-image: url(buttons/start_button_h.png);
     background-color: rgba(0, 0, 0, 0);
@@ -573,6 +538,30 @@ button.start_button:hover {
 }
 .tree_flamed {
     background-image: url(playground/brown_tree_flamed.gif);
+    width: 135px;
+    height: 152px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: relative;
+    bottom: -10px;
+    right: 0px;
+    z-index: 10000;
+}
+.tree_egzecution {
+    background-image: url(playground/tree_egzecution.gif);
+    width: 135px;
+    height: 152px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    position: relative;
+    bottom: 0px;
+    right: 0px;
+    z-index: 10000;
+}
+.tree_shot {
+    background-image: url(playground/tree_shot.png);
     width: 135px;
     height: 152px;
     background-repeat: no-repeat;
@@ -644,16 +633,6 @@ button.start_button:hover {
     bottom: 0px;
     right: -60px;
     z-index: 10000;
-}
-.dust {
-    background-image: url(playground/dust.gif);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    width: 150px;
-    height: 60px;
-    position: fixed;
-    left: 80px ;
-    z-index: 9;
 }
 .score_tab {
     display: flex;
@@ -734,3 +713,4 @@ button.game_over:hover {
     font-weight: 800;
     z-index: 9999;
 }
+
