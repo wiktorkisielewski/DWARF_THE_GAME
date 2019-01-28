@@ -33,7 +33,10 @@
     fire.style.bottom = '15px';
     }
   
+    speedometer = 3;
+      
     
+
     function interval(func, wait, times){
       var interv = function(w, t){
           return function(){
@@ -240,6 +243,7 @@
         }, 1, 100);
       }
   
+      
       function jump() {
         var ground = document.getElementById('groundid');
         if (dwarf.offsetTop + 240 == ground.offsetTop) {
@@ -307,7 +311,7 @@
         } else if (left_pos_g2 == screen_width) {
           ground_2.style.left = "100vw";
         }
-      }, 5);
+      }, speedometer);
     }
 
     function move_left() {
@@ -383,14 +387,14 @@
               faint();
           } 
         }
-      }, 5)
+      }, speedometer)
 
        setInterval(function(){
         if ((dwarf.offsetLeft + 250) >= (obstacle1.offsetLeft)
           && dwarf.offsetLeft <= obstacle1.offsetLeft
           && (dwarf.offsetTop + 240) >= obstacle1.offsetTop) {
-            take_point();
             if (fire.classList.contains('minigun_shot')) {
+              take_point();
                 tree1.classList.add('tree_egzecution');
                 obstacle1.removeChild(bird1);
                 obstacle1.removeChild(legs1);
@@ -398,6 +402,7 @@
                   tree1.classList.add('tree_shot');
                 },500);
             } else if (fire.classList.contains('flamethrower_shot')) {
+              take_point();
               tree1.classList.add('tree_flamed');
               obstacle1.removeChild(bird1);
               obstacle1.removeChild(legs1);
@@ -459,14 +464,14 @@
               faint();
             }
           }
-      }, 5)
+      }, speedometer)
 
       setInterval(function(){
         if ((dwarf.offsetLeft + 250) >= (obstacle2.offsetLeft)
           && dwarf.offsetLeft <= obstacle2.offsetLeft
           && (dwarf.offsetTop + 240) >= obstacle2.offsetTop) {
-            add_point();
             if (fire.classList.contains('minigun_shot')) {
+              add_point();
                 tree2.classList.add('tree_egzecution');
                 obstacle2.removeChild(bird2);
                 obstacle2.removeChild(legs2);
@@ -474,6 +479,7 @@
                   tree2.classList.add('tree_shot');
                 },500);
             } else if (fire.classList.contains('flamethrower_shot')) {
+              add_point();
               tree2.classList.add('tree_flamed');
               obstacle2.removeChild(bird2);
               obstacle2.removeChild(legs2);
@@ -535,14 +541,14 @@
               faint();
             }
           }
-      }, 5)
+      }, speedometer)
 
       setInterval(function(){
         if ((dwarf.offsetLeft + 250) >= (obstacle3.offsetLeft)
           && dwarf.offsetLeft <= obstacle3.offsetLeft
           && (dwarf.offsetTop + 240) >= obstacle3.offsetTop) {
-            take_point();
             if (fire.classList.contains('minigun_shot')) {
+              take_point();
                 tree3.classList.add('tree_egzecution');
                 obstacle3.removeChild(bird3);
                 obstacle3.removeChild(legs3);
@@ -550,6 +556,7 @@
                   tree3.classList.add('tree_shot');
                 },500);
             } else if (fire.classList.contains('flamethrower_shot')) {
+              take_point();
               tree3.classList.add('tree_flamed');
               obstacle3.removeChild(bird3);
               obstacle3.removeChild(legs3);
@@ -612,14 +619,14 @@
               faint();
             }
           }
-      }, 5)
+      }, speedometer)
 
       setInterval(function(){
         if ((dwarf.offsetLeft + 250) >= (obstacle4.offsetLeft)
           && dwarf.offsetLeft <= obstacle4.offsetLeft
           && (dwarf.offsetTop + 240) >= obstacle4.offsetTop) {
-            add_point();
             if (fire.classList.contains('minigun_shot')) {
+              add_point();
                 tree4.classList.add('tree_egzecution');
                 obstacle4.removeChild(bird4);
                 obstacle4.removeChild(legs4);
@@ -627,6 +634,7 @@
                   tree4.classList.add('tree_shot');
                 },500);
             } else if (fire.classList.contains('flamethrower_shot')) {
+              add_point();
               tree4.classList.add('tree_flamed');
               obstacle4.removeChild(bird4);
               obstacle4.removeChild(legs4);
@@ -658,6 +666,9 @@
     }
    
     setInterval(function () {
-    score.innerHTML = points;
+      score.innerHTML = points;
+      if (points >> 5) {
+        speedometer = speedometer / (points);
+      }
     }, 5);
   

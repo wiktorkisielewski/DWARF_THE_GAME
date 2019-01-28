@@ -301,9 +301,8 @@
             tup_tup.style.visibility = ('visible');
         }, 2000);
     }, false);
-
     
-    
+    points = 0;
 
     setInterval(function() {
         if (life3.classList.contains('life_gray')
