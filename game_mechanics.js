@@ -148,6 +148,7 @@
     document.onkeydown = function (e) {
       
       function move_left() {
+        if (dwarf.offsetLeft >> 0) {
           var left_pos_d = dwarf.offsetLeft;
           var left_pos_h = head.offsetLeft;
           var left_pos_b = beard.offsetLeft;
@@ -164,25 +165,28 @@
             trousers.style.left = (left_pos_t) - 2 + 'px';
             shoes.style.left = (left_pos_shoes) - 2 + 'px';
             weapon.style.left = (left_pos_w) - 2 + 'px';
+        }
       }
 
       function move_right() {
-        var left_pos_d = dwarf.offsetLeft;
-        var left_pos_h = head.offsetLeft;
-        var left_pos_b = beard.offsetLeft;
-        var left_pos_shirt = shirt.offsetLeft;
-        var left_pos_t = trousers.offsetLeft;
-        var left_pos_shoes = shoes.offsetLeft;
-        var left_pos_w = weapon.offsetLeft;
-        var left_pos_tup = tup_tup.offsetLeft;
-          tup_tup.style.left = (left_pos_tup) + 2 + 'px';
-          dwarf.style.left = (left_pos_d) + 2 + 'px';
-          head.style.left = (left_pos_h) + 2 + 'px';
-          beard.style.left = (left_pos_b) + 2 + 'px';
-          shirt.style.left = (left_pos_shirt) + 2 + 'px';
-          trousers.style.left = (left_pos_t) + 2 + 'px';
-          shoes.style.left = (left_pos_shoes) + 2 + 'px';
-          weapon.style.left = (left_pos_w) + 2 + 'px';
+        if (dwarf.offsetLeft + 150 != window.innerWidth) {
+          var left_pos_d = dwarf.offsetLeft;
+          var left_pos_h = head.offsetLeft;
+          var left_pos_b = beard.offsetLeft;
+          var left_pos_shirt = shirt.offsetLeft;
+          var left_pos_t = trousers.offsetLeft;
+          var left_pos_shoes = shoes.offsetLeft;
+          var left_pos_w = weapon.offsetLeft;
+          var left_pos_tup = tup_tup.offsetLeft;
+            tup_tup.style.left = (left_pos_tup) + 2 + 'px';
+            dwarf.style.left = (left_pos_d) + 2 + 'px';
+            head.style.left = (left_pos_h) + 2 + 'px';
+            beard.style.left = (left_pos_b) + 2 + 'px';
+            shirt.style.left = (left_pos_shirt) + 2 + 'px';
+            trousers.style.left = (left_pos_t) + 2 + 'px';
+            shoes.style.left = (left_pos_shoes) + 2 + 'px';
+            weapon.style.left = (left_pos_w) + 2 + 'px';
+        }
     }
 
     function move_up() {
@@ -363,7 +367,8 @@
         var obstacle_left = obstacle1.offsetLeft;
         obstacle1.style.left = obstacle_left - 1 + 'px';
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
-          && (dwarf.offsetTop + 240) >= obstacle1.offsetTop){
+          && (dwarf.offsetTop + 240) >= obstacle1.offsetTop
+          && tree1.classList.contains('tree')){
           if (dwarf.offsetLeft == obstacle1.offsetLeft
             && life3.classList.contains('life')
             && life2.classList.contains('life')
@@ -395,6 +400,7 @@
           && (dwarf.offsetTop + 240) >= obstacle1.offsetTop) {
             if (fire.classList.contains('minigun_shot')) {
               take_point();
+                tree1.classList.remove('tree');
                 tree1.classList.add('tree_egzecution');
                 obstacle1.removeChild(bird1);
                 obstacle1.removeChild(legs1);
@@ -403,6 +409,7 @@
                 },500);
             } else if (fire.classList.contains('flamethrower_shot')) {
               take_point();
+              tree1.classList.add('tree');
               tree1.classList.add('tree_flamed');
               obstacle1.removeChild(bird1);
               obstacle1.removeChild(legs1);
@@ -440,7 +447,8 @@
         var obstacle_left = obstacle2.offsetLeft;
         obstacle2.style.left = obstacle_left - 1 + 'px';
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
-          && (dwarf.offsetTop + 240) >= obstacle2.offsetTop){
+          && (dwarf.offsetTop + 240) >= obstacle2.offsetTop
+          && tree2.classList.contains('tree')){
           if (dwarf.offsetLeft == obstacle2.offsetLeft
             && life3.classList.contains('life')
             && life2.classList.contains('life')
@@ -472,6 +480,7 @@
           && (dwarf.offsetTop + 240) >= obstacle2.offsetTop) {
             if (fire.classList.contains('minigun_shot')) {
               add_point();
+              tree2.classList.remove('tree');
                 tree2.classList.add('tree_egzecution');
                 obstacle2.removeChild(bird2);
                 obstacle2.removeChild(legs2);
@@ -480,6 +489,7 @@
                 },500);
             } else if (fire.classList.contains('flamethrower_shot')) {
               add_point();
+              tree2.classList.add('tree');
               tree2.classList.add('tree_flamed');
               obstacle2.removeChild(bird2);
               obstacle2.removeChild(legs2);
@@ -517,7 +527,8 @@
         var obstacle_left = obstacle3.offsetLeft;
         obstacle3.style.left = obstacle_left - 1 + 'px';
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
-          && (dwarf.offsetTop + 240) >= obstacle3.offsetTop){
+          && (dwarf.offsetTop + 240) >= obstacle3.offsetTop
+          && tree3.classList.contains('tree')){
           if (dwarf.offsetLeft == obstacle3.offsetLeft
             && life3.classList.contains('life')
             && life2.classList.contains('life')
@@ -549,6 +560,7 @@
           && (dwarf.offsetTop + 240) >= obstacle3.offsetTop) {
             if (fire.classList.contains('minigun_shot')) {
               take_point();
+              tree3.classList.remove('tree');
                 tree3.classList.add('tree_egzecution');
                 obstacle3.removeChild(bird3);
                 obstacle3.removeChild(legs3);
@@ -557,6 +569,7 @@
                 },500);
             } else if (fire.classList.contains('flamethrower_shot')) {
               take_point();
+              tree3.classList.add('tree');
               tree3.classList.add('tree_flamed');
               obstacle3.removeChild(bird3);
               obstacle3.removeChild(legs3);
@@ -595,7 +608,8 @@
         var obstacle_left = obstacle4.offsetLeft;
         obstacle4.style.left = obstacle_left - 1 + 'px';
         if ((dwarf.offsetTop + 240) <= terrain.offsetTop
-          && (dwarf.offsetTop + 240) >= obstacle4.offsetTop){
+          && (dwarf.offsetTop + 240) >= obstacle4.offsetTop
+          && tree4.classList.contains('tree')){
           if (dwarf.offsetLeft == obstacle4.offsetLeft
             && life3.classList.contains('life')
             && life2.classList.contains('life')
@@ -627,6 +641,7 @@
           && (dwarf.offsetTop + 240) >= obstacle4.offsetTop) {
             if (fire.classList.contains('minigun_shot')) {
               add_point();
+              tree4.classList.remove('tree');
                 tree4.classList.add('tree_egzecution');
                 obstacle4.removeChild(bird4);
                 obstacle4.removeChild(legs4);
@@ -635,6 +650,7 @@
                 },500);
             } else if (fire.classList.contains('flamethrower_shot')) {
               add_point();
+              tree4.classList.add('tree');
               tree4.classList.add('tree_flamed');
               obstacle4.removeChild(bird4);
               obstacle4.removeChild(legs4);
