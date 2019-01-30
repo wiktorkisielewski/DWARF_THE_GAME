@@ -35,6 +35,10 @@
   
     speedometer = 3;
       
+    var shooting = new Audio('minigun2.mp3');
+    var flameing = new Audio('flame2.mp3');
+    var jumping = new Audio('hop.mp3');
+    var dieing = new Audio('life_lost.mp3');
     
 
     function interval(func, wait, times){
@@ -63,13 +67,15 @@
 
   const game_over_back = document.createElement('div');
     game_over_back.classList.add('game_over_back');
-  const game_over = document.createElement('button');
+  const game_over = document.createElement('div');
     game_over.classList.add('game_over');
+  const play_again = document.createElement('div');
+    play_again.classList.add('play_again');
 
   function looser() {
     document.body.appendChild(game_over);
     document.body.appendChild(game_over_back);
-    
+    document.body.appendChild(play_again);
   }
 
   function faint() {
@@ -252,11 +258,14 @@
         var ground = document.getElementById('groundid');
         if (dwarf.offsetTop + 240 == ground.offsetTop) {
           move_up_inter();
+          jumping.play();
+          runing.pause();
           tup_tup.style.visibility = 'hidden';
             setTimeout(function () {
               move_down_inter();
               setTimeout(function () {
                 tup_tup.style.visibility = 'visible';
+                runing.play();
               }, 400)
             }, 600)
           }
@@ -267,11 +276,13 @@
         var fire = document.getElementById("fireid");
         fire.style.bottom = '-70px';
         fire.classList.add('minigun_shot');
+        shooting.play();
       }
       function flamethrower_shot() {
         var fire = document.getElementById("fireid");
         fire.style.bottom = '-50px';
         fire.classList.add('flamethrower_shot');
+        flameing.play();
       }
 
       function check_weapon() {
@@ -298,6 +309,8 @@
         var fire = document.getElementById('fireid');
         fire.className = "";
         fire.classList.add("empty_fire");
+        shooting.pause();
+        flameing.pause();
       }
     }
     
@@ -376,6 +389,7 @@
               life3.classList.remove('life');
               life3.classList.add('life_gray');
               faint();
+              dieing.play();
           } else if (dwarf.offsetLeft == obstacle1.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life')
@@ -383,6 +397,7 @@
               life2.classList.remove('life');
               life2.classList.add('life_gray');
               faint();
+              dieing.play();
           } else if (dwarf.offsetLeft == obstacle1.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life_gray')
@@ -390,6 +405,7 @@
               life.classList.remove('life');
               life.classList.add('life_gray');
               faint();
+              dieing.play();
           } 
         }
       }, speedometer)
@@ -456,6 +472,7 @@
               life3.classList.remove('life');
               life3.classList.add('life_gray');
               faint();
+              dieing.play();
           } else if (dwarf.offsetLeft == obstacle2.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life')
@@ -463,6 +480,7 @@
               life2.classList.remove('life');
               life2.classList.add('life_gray');
               faint();
+              dieing.play();
           } else if (dwarf.offsetLeft == obstacle2.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life_gray')
@@ -470,6 +488,7 @@
               life.classList.remove('life');
               life.classList.add('life_gray');
               faint();
+              dieing.play();
             }
           }
       }, speedometer)
@@ -536,6 +555,7 @@
               life3.classList.remove('life');
               life3.classList.add('life_gray');
               faint();
+              dieing.play();
           } else if (dwarf.offsetLeft == obstacle3.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life')
@@ -543,6 +563,7 @@
               life2.classList.remove('life');
               life2.classList.add('life_gray');
               faint();
+              dieing.play();
           } else if (dwarf.offsetLeft == obstacle3.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life_gray')
@@ -550,6 +571,7 @@
               life.classList.remove('life');
               life.classList.add('life_gray');
               faint();
+              dieing.play();
             }
           }
       }, speedometer)
@@ -617,6 +639,7 @@
               life3.classList.remove('life');
               life3.classList.add('life_gray');
               faint();
+              dieing.play();
           } else if (dwarf.offsetLeft == obstacle4.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life')
@@ -624,6 +647,7 @@
               life2.classList.remove('life');
               life2.classList.add('life_gray');
               faint();
+              dieing.play();
           } else if (dwarf.offsetLeft == obstacle4.offsetLeft
             && life3.classList.contains('life_gray')
             && life2.classList.contains('life_gray')
@@ -631,6 +655,7 @@
               life.classList.remove('life');
               life.classList.add('life_gray');
               faint();
+              dieing.play();
             }
           }
       }, speedometer)
