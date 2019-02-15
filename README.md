@@ -9,3 +9,5 @@ Created in vanilla Javascript, CSS and HTML.
 *code and graphics made by Wiktor Kisielewski </br>
 *sounds by Mikolaj "Freestylowiec" Witkiewicz
 
+[WORKS BEST IN GOOGLE CHROME]
+
